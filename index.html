@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Christian Luvunga Mayedi – Analyste en cybersécurité</title>
-<meta name="description" content="Christian Luvunga Mayedi – Analyste en cybersécurité en recherche d'alternance à Toulouse (Master 2 ERIS, ORT Toulouse). SIEM Wazuh, Active Directory, détection.">
+<meta name="description" content="Christian Luvunga Mayedi – Analyste en cybersécurité en recherche d'alternance à Toulouse (Master 2 ERIS, ORT Toulouse). SIEM Wazuh, Active Directory, détection. Auteur de SafeVault, gestionnaire de mots de passe Android publié sur Google Play.">
 <meta name="author" content="Christian Luvunga Mayedi">
 <link rel="canonical" href="https://christianluvunga.github.io/">
 
@@ -334,6 +334,7 @@ footer a { color: var(--muted); }
     <div class="right">
       <nav aria-label="Sections">
         <a href="#projet">Projet</a>
+        <a href="#safevault">SafeVault</a>
         <a href="#parcours">Parcours</a>
         <a href="#audit">Audit</a>
         <a href="#competences">Compétences</a>
@@ -355,7 +356,8 @@ footer a { color: var(--muted); }
       <p class="lede">Étudiant en <strong>Master 2 ERIS</strong> à ORT Toulouse, je recherche une alternance en
         sécurité des systèmes d'information. J'ai déployé un <strong>SIEM Wazuh</strong> en entreprise avec mes
         propres règles de détection, sécurisé un annuaire <strong>Active Directory</strong> et mené la refonte
-        complète d'un SI. Je veux me spécialiser dans la détection et la réponse aux incidents.</p>
+        complète d'un SI. Je veux me spécialiser dans la détection et la réponse aux incidents. J'ai aussi conçu et publié
+        <a href="#safevault"><strong>SafeVault</strong></a>, un gestionnaire de mots de passe Android sur Google Play.</p>
       <div class="cta">
         <a class="btn primary" href="#contact">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -473,6 +475,55 @@ footer a { color: var(--muted); }
   <span class="tg">&lt;mitre&gt;&lt;id&gt;</span>T1484.001<span class="tg">&lt;/id&gt;&lt;/mitre&gt;</span>
 <span class="tg">&lt;/rule&gt;</span></code></pre></div>
     </div>
+  </section>
+
+  <section class="block" id="safevault">
+    <div class="sec-head">
+      <span class="label">Projet personnel · 2026 · publié sur Google Play</span>
+      <h2>SafeVault : un gestionnaire de mots de passe 100&nbsp;% local</h2>
+    </div>
+    <div class="case-intro">
+      <div>
+        <p>SafeVault est une application Android qui garde mots de passe et notes sensibles uniquement sur le
+          téléphone : pas de compte, pas de serveur, pas de publicité, pas de connexion à Internet. Je l'ai conçue,
+          développée, testée et publiée seul, de l'architecture de chiffrement jusqu'à la fiche Google Play.</p>
+        <p>Mon objectif était de pratiquer la sécurité par conception : réduire la surface d'attaque plutôt que
+          d'ajouter des protections autour d'un service en ligne.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.christianluvunga.safevault" target="_blank" rel="noopener">Voir sur Google Play ↗</a>
+          <a class="btn ghost" href="https://christianluvunga.github.io/safevault-privacy/" target="_blank" rel="noopener">Politique de confidentialité ↗</a>
+        </div>
+      </div>
+      <div class="facts" aria-label="SafeVault en chiffres">
+        <div class="fact"><b>0</b><span>permission réseau déclarée (Internet et état du réseau retirés)</span></div>
+        <div class="fact"><b>600&nbsp;000</b><span>itérations PBKDF2-SHA256 pour dériver la clé</span></div>
+        <div class="fact"><b>225</b><span>tests automatisés qui passent</span></div>
+        <div class="fact"><b>16</b><span>mots pour la phrase de secours</span></div>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li><div><h3>Modèle de menace simple</h3>
+        <p>Aucune donnée ne quitte l'appareil : sans serveur ni compte, toute une classe de risques (fuite côté serveur, interception réseau, compromission de compte) disparaît par construction.</p></div></li>
+      <li><div><h3>Chiffrement du coffre</h3>
+        <p>Une clé de données aléatoire chiffre le coffre en AES-256-GCM. Cette clé est protégée par le mot de passe maître (PBKDF2-SHA256, 600&nbsp;000 itérations, sel aléatoire) et, séparément, par la phrase de secours : changer de mot de passe ne demande pas de tout rechiffrer.</p></div></li>
+      <li><div><h3>Protection à l'usage</h3>
+        <p>Verrouillage automatique après 3 minutes et au passage en arrière-plan, délai croissant après des essais de mot de passe erronés, captures d'écran bloquées, presse-papiers effacé après 30 secondes, déverrouillage biométrique en option.</p></div></li>
+      <li><div><h3>Réduction de la surface d'attaque</h3>
+        <p>Suppression des permissions Internet et état du réseau, politique de sécurité de contenu qui interdit toute connexion, sauvegarde automatique Android désactivée. Vérifié dans le manifeste fusionné puis sur un téléphone.</p></div></li>
+      <li><div><h3>Publication et conformité</h3>
+        <p>Test fermé de 14 jours avec plus de 12 testeurs, déclaration « Sécurité des données » alignée sur le comportement réel, politique de confidentialité en ligne, fiche Play rédigée sans promesse excessive.</p></div></li>
+    </ol>
+
+    <p class="code-note"><strong>Limites assumées.</strong> SafeVault n'a pas fait l'objet d'un audit indépendant. La dérivation de clé
+      utilise PBKDF2 (Argon2id est prévu dans une prochaine version), et l'application ne propose ni remplissage automatique ni
+      synchronisation. Elle ne protège pas un téléphone déjà compromis. Je les indique ici parce qu'un outil de sécurité
+      doit dire ce qu'il ne fait pas.</p>
+
+    <div class="skill" style="margin-top:22px"><h3>Technologies</h3><div class="chips">
+      <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span>
+      <span class="chip">Capacitor</span><span class="chip">Android (Java)</span><span class="chip">AES-256-GCM</span>
+      <span class="chip">PBKDF2</span><span class="chip">Google Play Console</span></div></div>
   </section>
 
   <section class="block" id="parcours">
@@ -619,7 +670,8 @@ footer a { color: var(--muted); }
           <div class="skill"><h3>Cybersécurité</h3><div class="chips">
             <span class="chip key">SIEM Wazuh</span><span class="chip key">Règles de détection</span>
             <span class="chip">MITRE ATT&amp;CK</span><span class="chip">Détection d'intrusion</span><span class="chip">IAM</span>
-            <span class="chip">Sécurisation AD / GPO</span><span class="chip">Audit SI</span><span class="chip">GnuPG</span></div></div>
+            <span class="chip">Sécurisation AD / GPO</span><span class="chip">Audit SI</span><span class="chip">GnuPG</span>
+            <span class="chip">Cryptographie appliquée</span></div></div>
           <div class="skill"><h3>Gouvernance et conformité</h3><div class="chips">
             <span class="chip key">NIST CSF</span><span class="chip">PCI DSS</span><span class="chip">RGPD</span>
             <span class="chip">SOC 1 / SOC 2</span><span class="chip">Évaluation des risques</span></div></div>
@@ -634,6 +686,8 @@ footer a { color: var(--muted); }
           <div class="skill"><h3>Gestion de projet</h3><div class="chips">
             <span class="chip">Cadrage WBS</span><span class="chip">KPI</span><span class="chip">Cahier des charges</span>
             <span class="chip">Outils IA</span></div></div>
+          <div class="skill"><h3>Développement</h3><div class="chips">
+            <span class="chip">TypeScript / React</span><span class="chip">Android (Capacitor)</span><span class="chip">Publication Google Play</span></div></div>
         </div>
       </div>
       <div class="stack">
