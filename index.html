@@ -201,6 +201,17 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); }
   .pillars, .benefits { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* vidéos YouTube SafeVault */
+.yt { margin-top: 36px; }
+.yt-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.yt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 280px)); gap: 20px; }
+.yt-item { margin: 0; display: grid; gap: 8px; }
+.yt-frame { aspect-ratio: 9 / 16; width: 100%; max-width: 100%; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--line); background: var(--code-bg); }
+.yt-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.yt-item figcaption { font-size: 14px; }
+@media (max-width: 520px) { .yt-grid { grid-template-columns: minmax(0, 1fr); } .yt-frame { max-width: 320px; } }
+
 /* règles Wazuh : cartes-onglets + code */
 .rules-head { margin-top: 48px; margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; }
 .rules-head h3 { font-size: 22px; font-weight: 750; font-stretch: 85%; }
@@ -548,6 +559,23 @@ footer a { color: var(--muted); }
       </video>
       <figcaption><strong>SafeVault en 34 secondes.</strong> Liste des comptes, ajout d'une entrée, générateur de mots de passe, sauvegarde chiffrée et verrouillage automatique. La vidéo n'a pas de son : tout est dans les images.</figcaption>
     </figure>
+
+    <div class="yt">
+      <div class="yt-head">
+        <h3 class="sub-h" style="margin:0">SafeVault sur YouTube</h3>
+        <span class="label">2 vidéos courtes</span>
+      </div>
+      <div class="yt-grid">
+        <figure class="yt-item">
+          <div class="yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/o_ODcPUgTxg" title="SafeVault – vidéo YouTube 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+          <figcaption><a href="https://www.youtube.com/shorts/o_ODcPUgTxg" target="_blank" rel="noopener">Voir sur YouTube ↗</a></figcaption>
+        </figure>
+        <figure class="yt-item">
+          <div class="yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/gOWrQENnMYc" title="SafeVault – vidéo YouTube 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+          <figcaption><a href="https://www.youtube.com/shorts/gOWrQENnMYc" target="_blank" rel="noopener">Voir sur YouTube ↗</a></figcaption>
+        </figure>
+      </div>
+    </div>
 
     <ol class="steps">
       <li><div><h3>Modèle de menace simple</h3>
