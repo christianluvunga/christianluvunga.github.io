@@ -546,8 +546,8 @@ footer a { color: var(--muted); }
       </div>
       <div class="facts" aria-label="SafeVault en chiffres">
         <div class="fact"><b>0</b><span>permission réseau déclarée (Internet et état du réseau retirés)</span></div>
-        <div class="fact"><b>600&nbsp;000</b><span>itérations PBKDF2-SHA256 pour dériver la clé</span></div>
-        <div class="fact"><b>225</b><span>tests automatisés qui passent</span></div>
+        <div class="fact"><b>Argon2id</b><span>dérivation de clé (32&nbsp;Mio, 3 passes)</span></div>
+        <div class="fact"><b>550</b><span>tests automatisés qui passent</span></div>
         <div class="fact"><b>16</b><span>mots pour la phrase de secours</span></div>
       </div>
     </div>
@@ -581,24 +581,26 @@ footer a { color: var(--muted); }
       <li><div><h3>Modèle de menace simple</h3>
         <p>Aucune donnée ne quitte l'appareil : sans serveur ni compte, toute une classe de risques (fuite côté serveur, interception réseau, compromission de compte) disparaît par construction.</p></div></li>
       <li><div><h3>Chiffrement du coffre</h3>
-        <p>Une clé de données aléatoire chiffre le coffre en AES-256-GCM. Cette clé est protégée par le mot de passe maître (PBKDF2-SHA256, 600&nbsp;000 itérations, sel aléatoire) et, séparément, par la phrase de secours : changer de mot de passe ne demande pas de tout rechiffrer.</p></div></li>
+        <p>Une clé de données aléatoire chiffre le coffre en AES-256-GCM. Cette clé est protégée par le mot de passe maître (Argon2id, 32&nbsp;Mio, 3 passes) et, séparément, par la phrase de secours : changer de mot de passe ne demande pas de tout rechiffrer. Les coffres créés avant cette version sont migrés automatiquement depuis PBKDF2-SHA256, sans perte de données.</p></div></li>
       <li><div><h3>Protection à l'usage</h3>
         <p>Verrouillage automatique après 3 minutes et au passage en arrière-plan, délai croissant après des essais de mot de passe erronés, captures d'écran bloquées, presse-papiers effacé après 30 secondes, déverrouillage biométrique en option.</p></div></li>
+      <li><div><h3>Remplissage automatique natif (Autofill Android)</h3>
+        <p>Propose un compte uniquement quand le domaine réel du site correspond exactement à celui enregistré (jamais sur un domaine qui y ressemble), redemande toujours une authentification avant de livrer le mot de passe, et ne peut jamais créer un nouveau compte de lui-même.</p></div></li>
       <li><div><h3>Réduction de la surface d'attaque</h3>
         <p>Suppression des permissions Internet et état du réseau, politique de sécurité de contenu qui interdit toute connexion, sauvegarde automatique Android désactivée. Vérifié dans le manifeste fusionné puis sur un téléphone.</p></div></li>
       <li><div><h3>Publication et conformité</h3>
         <p>Test fermé de 14 jours avec plus de 12 testeurs, déclaration « Sécurité des données » alignée sur le comportement réel, politique de confidentialité en ligne, fiche Play rédigée sans promesse excessive.</p></div></li>
     </ol>
 
-    <p class="code-note"><strong>Limites assumées.</strong> SafeVault n'a pas fait l'objet d'un audit indépendant. La dérivation de clé
-      utilise PBKDF2 (Argon2id est prévu dans une prochaine version), et l'application ne propose ni remplissage automatique ni
-      synchronisation. Elle ne protège pas un téléphone déjà compromis. Je les indique ici parce qu'un outil de sécurité
+    <p class="code-note"><strong>Limites assumées.</strong> SafeVault n'a pas fait l'objet d'un audit indépendant et ne protège pas
+      un téléphone déjà compromis. Il n'y a toujours aucune synchronisation entre appareils : chaque coffre reste local à son
+      téléphone, l'export chiffré étant le seul moyen d'en changer. Je les indique ici parce qu'un outil de sécurité
       doit dire ce qu'il ne fait pas.</p>
 
     <div class="skill" style="margin-top:22px"><h3>Technologies</h3><div class="chips">
       <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span>
       <span class="chip">Capacitor</span><span class="chip">Android (Java)</span><span class="chip">AES-256-GCM</span>
-      <span class="chip">PBKDF2</span><span class="chip">Google Play Console</span></div></div>
+      <span class="chip">Argon2id</span><span class="chip">Google Play Console</span></div></div>
   </section>
 
   <section class="block" id="launchhub">
