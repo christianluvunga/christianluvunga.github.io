@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Christian Luvunga Mayedi – Analyste en cybersécurité</title>
-<meta name="description" content="Christian Luvunga Mayedi – Analyste en cybersécurité en recherche d'alternance à Toulouse (Master 2 ERIS, ORT Toulouse). SIEM Wazuh, Active Directory, détection. Auteur de SafeVault, gestionnaire de mots de passe Android publié sur Google Play.">
+<meta name="description" content="Christian Luvunga Mayedi – Analyste en cybersécurité en recherche d'alternance à Toulouse (Master 2 ERIS, ORT Toulouse). SIEM Wazuh, Active Directory, détection. Créateur de SafeVault (Google Play) et LaunchHub.">
 <meta name="author" content="Christian Luvunga Mayedi">
 <link rel="canonical" href="https://christianluvunga.github.io/">
 
@@ -13,18 +13,18 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://christianluvunga.github.io/">
 <meta property="og:title" content="Christian Luvunga Mayedi – Analyste en cybersécurité">
-<meta property="og:description" content="Recherche d'alternance en cybersécurité à Toulouse. SIEM Wazuh avec règles de détection, sécurisation Active Directory, refonte complète d'un SI.">
+<meta property="og:description" content="Recherche d'alternance en cybersécurité à Toulouse. SIEM Wazuh avec règles de détection, sécurisation Active Directory, refonte complète d'un SI, SafeVault et LaunchHub.">
 <meta property="profile:first_name" content="Christian">
 <meta property="profile:last_name" content="Luvunga Mayedi">
 <meta name="twitter:card" content="summary">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A6F64'/%3E%3Ctext x='32' y='43' font-family='Arial Narrow,Arial,sans-serif' font-size='30' font-weight='700' fill='%23fff' text-anchor='middle'%3ECLM%3C/text%3E%3C/svg%3E">
-<meta name="theme-color" content="#EDF1F2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0B151B" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A6F64'/%3E%3Ctext x='32' y='42' font-family='Arial Narrow,Arial,sans-serif' font-size='26' font-weight='800' fill='%23fff' text-anchor='middle'%3ECLM%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#F3F6F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#081016" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 
 <script>
 /* Applique le thème choisi avant l'affichage, pour éviter un flash */
@@ -34,81 +34,107 @@
 </script>
 
 <style>
-/* Mise en page : le dossier d'un analyste sécurité — fiche d'identité, étude de cas détaillée, parcours, puis travaux complémentaires. */
+/* Mise en page : dossier d'analyste SOC. Hero asymétrique (identité + console d'alertes),
+   bandeau « fiche candidat », puis sections alternées : cas réel, projets, parcours, audit, compétences.
+   Palette ardoise / émeraude / ambre, en clair et en sombre. */
 :root {
-  --bg: #EDF1F2;
+  --bg: #F3F6F7;
+  --bg-2: #E9EFF1;
   --surface: #FFFFFF;
-  --fg: #0F1D25;
-  --muted: #4E5F68;
-  --line: #CCD6DA;
+  --surface-2: #F0F4F5;
+  --fg: #0D1A22;
+  --muted: #4B5D67;
+  --line: #D3DDE1;
+  --line-strong: #BCCAD0;
   --accent: #0A6F64;
+  --accent-2: #0E8C7E;
   --accent-ink: #FFFFFF;
-  --accent-soft: #D7ECE8;
-  --alert: #A65E00;
-  --alert-soft: #F6E7CF;
-  --code-bg: #0F1D25;
-  --code-fg: #D5E2E6;
-  --code-tag: #7FD8C8;
-  --code-attr: #E7B76A;
-  --code-com: #7E939C;
-  --bar-bg: rgba(237, 241, 242, .86);
+  --accent-soft: #DCEFEB;
+  --warn: #A85A00;
+  --warn-soft: #F7E9D4;
+  --ok: #0E7A56;
+  --bad: #B42318;
+  --bad-soft: #FBE7E5;
+  --console-bg: #0B151C;
+  --console-fg: #D6E3E8;
+  --console-dim: #7D939E;
+  --console-line: rgba(255, 255, 255, .08);
+  --code-tag: #6EE7D2;
+  --code-attr: #F2B85B;
+  --bar-bg: rgba(243, 246, 247, .86);
+  --shadow: 0 1px 2px rgba(13, 26, 34, .04), 0 8px 24px -16px rgba(13, 26, 34, .18);
+  --shadow-lg: 0 2px 4px rgba(13, 26, 34, .04), 0 24px 48px -24px rgba(13, 26, 34, .28);
+  --radius: 12px;
   --display: "Archivo", "Arial Narrow", Arial, sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0B151B; --surface: #12212A; --fg: #E2EBEE; --muted: #9AAEB6; --line: #24363F;
-    --accent: #46C2AE; --accent-ink: #062320; --accent-soft: #143A36; --alert: #E7A64A; --alert-soft: #3A2C16;
-    --code-bg: #071015; --bar-bg: rgba(11, 21, 27, .86);
+    --bg: #081016; --bg-2: #0C171E; --surface: #0F1C24; --surface-2: #13232D; --fg: #E4EEF1; --muted: #98ACB6;
+    --line: #1F323D; --line-strong: #2C4350; --accent: #3CCBB4; --accent-2: #6EE7D2; --accent-ink: #04201C;
+    --accent-soft: #10332F; --warn: #F2B85B; --warn-soft: #33270F; --ok: #4ADE9B; --bad: #F2867A; --bad-soft: #3A1A17;
+    --console-bg: #050B0F; --bar-bg: rgba(8, 16, 22, .86);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -16px rgba(0, 0, 0, .6);
+    --shadow-lg: 0 2px 4px rgba(0, 0, 0, .3), 0 28px 56px -24px rgba(0, 0, 0, .75);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0B151B; --surface: #12212A; --fg: #E2EBEE; --muted: #9AAEB6; --line: #24363F;
-  --accent: #46C2AE; --accent-ink: #062320; --accent-soft: #143A36; --alert: #E7A64A; --alert-soft: #3A2C16;
-  --code-bg: #071015; --bar-bg: rgba(11, 21, 27, .86);
+  --bg: #081016; --bg-2: #0C171E; --surface: #0F1C24; --surface-2: #13232D; --fg: #E4EEF1; --muted: #98ACB6;
+  --line: #1F323D; --line-strong: #2C4350; --accent: #3CCBB4; --accent-2: #6EE7D2; --accent-ink: #04201C;
+  --accent-soft: #10332F; --warn: #F2B85B; --warn-soft: #33270F; --ok: #4ADE9B; --bad: #F2867A; --bad-soft: #3A1A17;
+  --console-bg: #050B0F; --bar-bg: rgba(8, 16, 22, .86);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -16px rgba(0, 0, 0, .6);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, .3), 0 28px 56px -24px rgba(0, 0, 0, .75);
   color-scheme: dark;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.6 var(--body); }
-.wrap { max-width: 1112px; margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.62 var(--body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1160px; margin: 0 auto;
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { font-family: var(--display); margin: 0; text-wrap: balance; }
 p { margin: 0; }
-.label { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+code { font-family: var(--mono); font-size: .92em; }
 .skip { position: absolute; left: -9999px; }
-.skip:focus { left: 16px; top: 12px; z-index: 20; background: var(--surface); padding: 8px 12px; }
+.skip:focus { left: 16px; top: 12px; z-index: 60; background: var(--surface); padding: 8px 12px; border-radius: 6px; }
 
-/* boutons */
-.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px/1 var(--body); text-decoration: none;
-  padding: 13px 18px; border-radius: 6px; border: 1px solid var(--accent); cursor: pointer; }
+.kicker { display: inline-flex; align-items: center; gap: 8px; font: 600 12px/1.3 var(--mono); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--accent); }
+.kicker::before { content: ""; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
+.label { font: 500 12px/1.4 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+
+/* Boutons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 14.5px/1 var(--body);
+  text-decoration: none; padding: 12px 18px; border-radius: 8px; border: 1px solid transparent; cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease, color .15s ease; }
 .btn svg { width: 16px; height: 16px; flex: none; }
 .btn.primary { background: var(--accent); color: var(--accent-ink); }
-.btn.primary:hover { filter: brightness(1.08); }
-.btn.ghost { background: transparent; color: var(--accent); }
-.btn.ghost:hover { background: var(--accent-soft); }
-.btn.sm { font-size: 13px; padding: 8px 12px; }
+.btn.primary:hover { transform: translateY(-1px); background: var(--accent-2); }
+.btn.ghost { background: var(--surface); color: var(--fg); border-color: var(--line-strong); }
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn.sm { padding: 8px 12px; font-size: 13px; border-radius: 7px; }
 
-/* barre du haut (fixe) */
-.topbar { position: sticky; top: 0; z-index: 10; background: var(--bar-bg);
-  -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px);
-  border-bottom: 1px solid var(--line); }
-.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 12px; }
-.top .id { font: 500 13px/1 var(--mono); color: var(--fg); text-decoration: none; white-space: nowrap; }
-.top .right { display: flex; align-items: center; gap: 20px; }
-.top nav { display: flex; gap: 18px; }
-.top nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
-.top nav a:hover { color: var(--fg); }
-.theme { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 6px; cursor: pointer;
-  background: none; border: 1px solid var(--line); color: var(--muted); }
-.theme:hover { color: var(--fg); border-color: var(--muted); }
+/* Barre du haut */
+.topbar { position: sticky; top: 0; z-index: 30; background: var(--bar-bg);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--line); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 62px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; font: 600 13px/1 var(--mono); white-space: nowrap; }
+.brand-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font: 700 11px/1 var(--mono); letter-spacing: .02em; }
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.nav-links { display: flex; gap: 2px; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 7px 10px; border-radius: 7px; }
+.nav-links a:hover { color: var(--fg); background: var(--surface-2); }
+.theme { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 8px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+.theme:hover { color: var(--fg); border-color: var(--line-strong); }
 .theme svg { width: 16px; height: 16px; }
 .theme .moon { display: none; }
 :root[data-theme="dark"] .theme .sun { display: none; }
@@ -117,256 +143,312 @@ p { margin: 0; }
   :root:not([data-theme="light"]) .theme .sun { display: none; }
   :root:not([data-theme="light"]) .theme .moon { display: block; }
 }
+@media (max-width: 1100px) { .nav-links { display: none; } }
 
-/* hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 48px;
-  padding-block: 56px 64px; align-items: start; }
-.status { display: inline-flex; align-items: center; gap: 10px; font: 500 13px/1.2 var(--mono);
-  color: var(--accent); background: var(--accent-soft); padding: 8px 12px; border-radius: 999px; }
-.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none;
-  animation: pulse 2.4s ease-in-out infinite; }
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; padding-block: 56px 40px; align-items: center; }
+.status { display: inline-flex; align-items: center; gap: 9px; padding: 7px 13px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent); font: 600 12.5px/1.2 var(--mono); }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: .35; } }
-@media (prefers-reduced-motion: reduce) { .status::before { animation: none; } }
-.hero h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 800; font-stretch: 78%; line-height: .98;
-  letter-spacing: -.01em; margin-top: 22px; }
-.hero h1 span { color: var(--accent); }
-.hero .lede { font-size: 18px; color: var(--muted); max-width: 58ch; margin-top: 22px; }
+.hero h1 { margin-top: 22px; font-size: clamp(40px, 6.4vw, 72px); font-weight: 800; font-stretch: 78%; line-height: .97; letter-spacing: -.012em; }
+.hero h1 .role { display: block; margin-top: 8px; color: var(--accent); }
+.hero .lede { margin-top: 22px; font-size: 17.5px; color: var(--muted); max-width: 58ch; }
 .hero .lede strong { color: var(--fg); font-weight: 600; }
-.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hero-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 34px;
+  border-top: 1px solid var(--line); }
+.hero-metric { padding: 16px 14px 0 0; }
+.hero-metric + .hero-metric { padding-left: 14px; border-left: 1px solid var(--line); }
+.hero-metric b { display: block; font: 800 30px/1 var(--display); font-stretch: 80%; font-variant-numeric: tabular-nums; }
+.hero-metric span { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.35; color: var(--muted); }
 
-.record { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.record header { padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; }
-.record dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); }
-.record dt, .record dd { padding: 11px 16px; border-bottom: 1px solid var(--line); margin: 0; }
-.record dt { font: 500 12px/1.5 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-.record dd { font-size: 15px; font-weight: 500; }
-.record dd.hl { color: var(--accent); font-weight: 600; }
-.record dl > :nth-last-child(-n+2) { border-bottom: 0; }
+/* Console d'alertes (aperçu) */
+.console { background: var(--console-bg); color: var(--console-fg); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-lg); border: 1px solid var(--line); font: 400 12.5px/1.55 var(--mono); }
+.console-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 14px;
+  border-bottom: 1px solid var(--console-line); color: var(--console-dim); font-size: 11.5px; }
+.console-bar .dots { display: flex; gap: 6px; }
+.console-bar .dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, .16); }
+.console-bar .live { display: inline-flex; align-items: center; gap: 6px; color: var(--code-tag); }
+.console-bar .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 1.8s ease-in-out infinite; }
+.console-body { padding: 8px 0; }
+.alert-row { display: grid; grid-template-columns: 64px 54px minmax(0, 1fr); gap: 10px; align-items: baseline;
+  padding: 9px 14px; border-left: 2px solid transparent; }
+.alert-row + .alert-row { border-top: 1px solid var(--console-line); }
+.alert-row .ts { color: var(--console-dim); }
+.lvl { justify-self: start; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px; }
+.lvl.hi { background: rgba(242, 134, 122, .16); color: #F2867A; }
+.lvl.md { background: rgba(242, 184, 91, .16); color: #F2B85B; }
+.lvl.lo { background: rgba(110, 231, 210, .14); color: var(--code-tag); }
+.alert-row .msg { color: var(--console-fg); }
+.alert-row .meta { display: block; color: var(--console-dim); font-size: 11.5px; }
+.alert-row .meta b { color: var(--code-attr); font-weight: 500; }
+.alert-row.hl { border-left-color: #F2867A; background: rgba(242, 134, 122, .05); }
+.console-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 14px;
+  border-top: 1px solid var(--console-line); color: var(--console-dim); font-size: 11px; }
 
-/* sections */
-section.block { padding-block: 56px; border-top: 1px solid var(--line); }
-.sec-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
-.sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 750; font-stretch: 85%; }
+/* Bandeau fiche candidat */
+.profile-band { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 64px; }
+.pb-cell { padding: 16px 16px 15px; min-width: 0; }
+.pb-cell + .pb-cell { border-left: 1px solid var(--line); }
+.pb-cell dt { font: 500 11px/1.3 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.pb-cell dd { margin: 6px 0 0; font-size: 14px; font-weight: 600; line-height: 1.35; }
+.pb-cell dd.hl { color: var(--accent); }
 
-/* étude de cas */
-.case-intro { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; }
-.case-intro p { max-width: 60ch; }
-.case-intro p + p { margin-top: 14px; }
-.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line);
-  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; align-self: start; }
-.facts.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.fact { background: var(--surface); padding: 18px 16px; }
-.fact b { display: block; font: 700 36px/1 var(--display); font-stretch: 80%; font-variant-numeric: tabular-nums; }
-.fact span { display: block; font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.35; }
+/* Sections */
+section.sec { padding-block: 72px; border-top: 1px solid var(--line); }
+section.sec.tint { background: var(--bg-2); border-top-color: transparent; }
+.sec-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 760px; }
+.sec-head h2 { font-size: clamp(29px, 4vw, 44px); font-weight: 800; font-stretch: 82%; line-height: 1.04; letter-spacing: -.01em; }
+.sec-head .intro { color: var(--muted); font-size: 17px; max-width: 64ch; }
+.sub-h { font-family: var(--display); font-size: 22px; font-weight: 750; font-stretch: 85%; margin: 44px 0 16px; }
+.two-col { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.prose p { color: var(--fg); max-width: 62ch; }
+.prose p + p { margin-top: 14px; }
+.prose .mini { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.prose .mini + p { color: var(--muted); }
+.prose .mini:not(:first-child) { margin-top: 22px; }
 
-.steps { list-style: none; padding: 0; margin: 40px 0 0; display: grid; counter-reset: s; }
-.steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding-block: 16px;
-  border-top: 1px solid var(--line); counter-increment: s; }
-.steps li::before { content: counter(s, decimal-leading-zero); font: 500 14px/1.7 var(--mono); color: var(--accent); }
-.steps h3 { font-size: 19px; font-weight: 700; font-stretch: 90%; }
-.steps p { color: var(--muted); margin-top: 4px; max-width: 70ch; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.badge { font: 500 11.5px/1 var(--mono); padding: 6px 8px; border-radius: 6px; background: var(--surface);
+  border: 1px solid var(--line); color: var(--muted); }
+.badge.on { color: var(--accent); border-color: transparent; background: var(--accent-soft); }
 
+/* KPI */
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.kpis.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.kpis.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 16px; box-shadow: var(--shadow); }
+.kpi b { display: block; font: 800 34px/1 var(--display); font-stretch: 80%; color: var(--accent); font-variant-numeric: tabular-nums; }
+.kpi b.word { font-size: 26px; }
+.kpi span { display: block; margin-top: 8px; font-size: 13px; line-height: 1.4; color: var(--muted); }
 
-/* vidéo de présentation SafeVault */
-.demo { margin: 36px 0 0; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 28px; align-items: center; }
-.demo video { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid var(--line); background: var(--code-bg); aspect-ratio: 9 / 16; }
-.demo figcaption { color: var(--muted); font-size: 15px; max-width: 52ch; }
-.demo figcaption strong { color: var(--fg); font-weight: 600; }
-@media (max-width: 820px) { .demo { grid-template-columns: minmax(0, 1fr); } .demo video { max-width: 320px; } }
+/* Étapes en cartes */
+.flow { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px; counter-reset: s; }
+.flow.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.flow.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.flow li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px; display: grid; gap: 6px; align-content: start; transition: border-color .15s ease, transform .15s ease; }
+.flow li:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.flow li::before { content: counter(s, decimal-leading-zero); justify-self: start; font: 600 12px/1 var(--mono); color: var(--accent);
+  background: var(--accent-soft); padding: 5px 8px; border-radius: 6px; margin-bottom: 6px; }
+.flow h3 { font-size: 17px; font-weight: 700; font-stretch: 92%; }
+.flow p { font-size: 14px; color: var(--muted); line-height: 1.5; }
 
-/* LaunchHub : piliers, bénéfices, panneaux */
-.side-stack { display: grid; gap: 14px; align-content: start; }
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
-.panel .mini { font-size: 18px; margin-bottom: 10px; }
-.panel .plain { gap: 10px; font-size: 15px; }
-.panel .plain strong { font-weight: 600; }
-.sub-h { font-family: var(--display); font-size: 22px; font-weight: 750; font-stretch: 85%; margin: 44px 0 14px; }
-.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
-.pillar h4 { margin: 0 0 8px; font: 600 16px/1.3 var(--body); }
-.pillar ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
-.benefits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line);
-  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.benefits > div { background: var(--surface); padding: 16px; display: grid; gap: 6px; align-content: start; }
-.benefits b { font: 700 18px/1.2 var(--display); font-stretch: 85%; color: var(--accent); }
-.benefits span { font-size: 14px; color: var(--muted); line-height: 1.45; }
-.sec-sub { margin-top: 48px; padding-top: 28px; border-top: 1px dashed var(--line); }
-.sub-lede { color: var(--muted); margin: 0 0 16px; max-width: 65ch; }
-.facts.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-@media (max-width: 820px) {
-  .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .benefits, .facts.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 520px) {
-  .pillars, .benefits { grid-template-columns: minmax(0, 1fr); }
-}
-
-/* vidéos YouTube SafeVault */
-.yt { margin-top: 36px; }
-.yt-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-.yt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 280px)); gap: 20px; }
-.yt-item { margin: 0; display: grid; gap: 8px; }
-.yt-frame { aspect-ratio: 9 / 16; width: 100%; max-width: 100%; border-radius: 10px; overflow: hidden;
-  border: 1px solid var(--line); background: var(--code-bg); }
-.yt-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-.yt-item figcaption { font-size: 14px; }
-@media (max-width: 520px) { .yt-grid { grid-template-columns: minmax(0, 1fr); } .yt-frame { max-width: 320px; } }
-
-/* règles Wazuh : cartes-onglets + code */
-.rules-head { margin-top: 48px; margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+/* Règles Wazuh */
+.rules-head { margin-top: 52px; margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; justify-content: space-between; }
 .rules-head h3 { font-size: 22px; font-weight: 750; font-stretch: 85%; }
-.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.rule { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px;
-  display: grid; gap: 10px; align-content: start; text-align: left; font: inherit; color: inherit; cursor: pointer;
-  position: relative; transition: border-color .15s; }
-.rule:hover { border-color: var(--muted); }
-.rule[aria-selected="true"] { border-color: var(--accent); box-shadow: inset 0 3px 0 var(--accent); }
-.rule .tag { justify-self: start; font: 500 12px/1 var(--mono); color: var(--alert); background: var(--alert-soft);
-  padding: 6px 8px; border-radius: 4px; }
-.rule .t { font: 600 17px/1.3 var(--body); }
-.rule .d { font-size: 14px; color: var(--muted); }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.rule { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px;
+  display: grid; gap: 8px; align-content: start; font: inherit; color: inherit; cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease; }
+.rule:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+.rule[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.rule .tag { justify-self: start; font: 600 11.5px/1 var(--mono); color: var(--warn); background: var(--warn-soft); padding: 5px 7px; border-radius: 5px; }
+.rule .t { font: 600 16px/1.3 var(--body); }
+.rule .d { font-size: 13.5px; color: var(--muted); }
 .rule .see { font: 500 12px/1 var(--mono); color: var(--accent); }
 .rule[aria-selected="true"] .see::after { content: " ↓"; }
 
-.code { margin-top: 14px; background: var(--code-bg); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
-.code-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px;
-  border-bottom: 1px solid rgba(255,255,255,.08); font: 500 12px/1.4 var(--mono); color: var(--code-com); }
+.code { margin-top: 14px; background: var(--console-bg); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.code-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 14px;
+  border-bottom: 1px solid var(--console-line); font: 500 12px/1.4 var(--mono); color: var(--console-dim); }
 .code-bar .dots { display: flex; gap: 6px; }
-.code-bar .dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.16); }
-.code pre { margin: 0; padding: 18px 16px; overflow-x: auto; font: 400 13.5px/1.65 var(--mono); color: var(--code-fg); tab-size: 2; }
+.code-bar .dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, .16); }
+.code-bar .right { display: flex; align-items: center; gap: 12px; }
+.copy-code { font: 500 11.5px/1 var(--mono); color: var(--console-fg); background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .14); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+.copy-code:hover { color: var(--code-tag); border-color: var(--code-tag); }
+.code pre { margin: 0; padding: 18px 16px; overflow-x: auto; font: 400 13.5px/1.65 var(--mono); color: var(--console-fg); tab-size: 2; }
 .code .tg { color: var(--code-tag); }
 .code .at { color: var(--code-attr); }
-.code .cm { color: var(--code-com); font-style: italic; }
-.code-note { margin-top: 18px; max-width: 75ch; font-size: 14px; color: var(--muted); padding: 12px 14px;
-  border-left: 3px solid var(--alert); background: var(--alert-soft); border-radius: 0 4px 4px 0; }
-.code-note strong { color: var(--fg); }
+.code .cm { color: var(--console-dim); font-style: italic; }
 
-/* parcours */
-.dossier { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
-.entry { padding-block: 16px; border-top: 1px solid var(--line); }
-.entry:first-of-type { border-top: 0; padding-top: 0; }
-.entry .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  font: 400 13px/1.5 var(--mono); color: var(--muted); margin-top: 2px; }
-.entry h3 { font: 600 18px/1.35 var(--body); }
-.entry .org { font-size: 15px; }
-.entry ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 4px; }
-.entry .eq { font-size: 14px; color: var(--muted); margin-top: 6px; }
-.entry .pill { display: inline-block; margin-left: 6px; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase;
-  color: var(--accent); background: var(--accent-soft); padding: 4px 6px; border-radius: 3px; vertical-align: 2px; }
-.sub { font-size: 22px; font-weight: 750; font-stretch: 85%; margin-bottom: 16px; }
-.stack { display: grid; gap: 40px; align-content: start; }
+.note { margin-top: 18px; max-width: 80ch; font-size: 14px; color: var(--muted); padding: 12px 14px;
+  border-left: 3px solid var(--warn); background: var(--warn-soft); border-radius: 0 8px 8px 0; }
+.note strong { color: var(--fg); }
 
-/* audit (travail de cours, présentation compacte) */
-#audit .sec-head h2 { font-size: clamp(24px, 3.2vw, 32px); }
-.mini { font-size: 20px; font-weight: 750; font-stretch: 85%; margin-bottom: 14px; }
-.audit-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; margin-top: 36px; }
-.controls { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-.controls li { font-size: 14px; padding: 8px 10px 8px 30px; border: 1px solid var(--line); border-radius: 4px;
-  background: var(--surface); position: relative; line-height: 1.35; }
-.controls li::before { position: absolute; left: 10px; top: 8px; font: 600 13px/1.35 var(--mono); }
-.controls li.no { border-color: var(--alert); background: var(--alert-soft); }
-.controls li.no::before { content: "✕"; color: var(--alert); }
-.controls li.yes::before { content: "✓"; color: var(--accent); }
-.legend { display: flex; gap: 16px; margin-top: 10px; font: 400 12px/1 var(--mono); color: var(--muted); }
-.k::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-.k.no::before { background: var(--alert); }
+/* Panneaux, piliers, bénéfices */
+.side-stack { display: grid; gap: 12px; align-content: start; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+.panel h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
+.plain li { padding-left: 18px; position: relative; }
+.plain li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 2px; background: var(--accent); }
+.panel .plain { font-size: 15px; }
+.panel .plain strong { font-weight: 600; }
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.pillar h4 { margin: 0 0 8px; font: 600 16px/1.3 var(--body); }
+.pillar ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.benefits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.benefit { border-top: 3px solid var(--accent); background: var(--surface); border-radius: 0 0 var(--radius) var(--radius);
+  padding: 16px; display: grid; gap: 6px; align-content: start; border-left: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.benefit b { font: 700 18px/1.2 var(--display); font-stretch: 88%; }
+.benefit span { font-size: 14px; color: var(--muted); line-height: 1.45; }
+.sec-sub { margin-top: 56px; padding-top: 32px; border-top: 1px dashed var(--line-strong); }
+.sec-sub .sub-h { margin-top: 0; margin-bottom: 6px; }
+.sec-sub p { color: var(--muted); margin-bottom: 18px; max-width: 65ch; }
+
+/* Médias SafeVault */
+.media { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 250px) repeat(2, minmax(0, 210px)) minmax(0, 1fr); gap: 16px; align-items: start; }
+.media figure { margin: 0; display: grid; gap: 8px; }
+.media video, .yt-frame { width: 100%; aspect-ratio: 9 / 16; border-radius: 10px; border: 1px solid var(--line); background: var(--console-bg); display: block; overflow: hidden; }
+.yt-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.media figcaption { font-size: 13px; color: var(--muted); }
+.media-text { align-self: center; color: var(--muted); font-size: 15px; }
+.media-text strong { color: var(--fg); font-weight: 600; }
+.media-text .label { display: block; margin-bottom: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13.5px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.chip.key { border-color: transparent; color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.tech { margin-top: 24px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+
+/* Parcours : frise */
+.path { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; }
+.path h3.col-title { font-size: 22px; font-weight: 750; font-stretch: 85%; margin-bottom: 18px; }
+.tl { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; display: grid; gap: 22px; }
+.tl::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); border-radius: 2px; }
+.tl > li { position: relative; }
+.tl > li::before { content: ""; position: absolute; left: -22px; top: 6px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent); }
+.tl > li.now::before { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.tl .when { font: 500 12.5px/1.4 var(--mono); color: var(--accent); }
+.tl h4 { margin-top: 4px; font: 600 18px/1.35 var(--body); }
+.tl .org { font-size: 15px; color: var(--fg); }
+.tl .where { font: 400 12.5px/1.4 var(--mono); color: var(--muted); }
+.tl ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 4px; }
+.tl .eq { font-size: 14px; color: var(--muted); margin-top: 6px; }
+.pill { display: inline-block; margin-left: 6px; font: 600 11px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft); padding: 4px 6px; border-radius: 4px; vertical-align: 2px; }
+.certs { display: grid; gap: 10px; margin-top: 28px; }
+.cert { display: flex; justify-content: space-between; gap: 12px; align-items: center; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.cert b { font-weight: 600; font-size: 15px; }
+.cert span { font: 400 12.5px/1.4 var(--mono); color: var(--muted); text-align: right; white-space: nowrap; }
+
+/* Audit : matrice */
+.audit-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px; margin-top: 36px; }
+.mini-h { font-size: 19px; font-weight: 750; font-stretch: 88%; margin-bottom: 14px; }
+.matrix { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.matrix li { display: flex; align-items: center; gap: 10px; font-size: 14px; padding: 9px 11px; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--line); line-height: 1.3; }
+.matrix li::before { flex: none; width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center;
+  font: 700 11px/1 var(--mono); }
+.matrix li.no { border-color: transparent; background: var(--bad-soft); }
+.matrix li.no::before { content: "✕"; background: var(--bad); color: var(--surface); }
+.matrix li.yes::before { content: "✓"; background: var(--accent-soft); color: var(--accent); }
+.legend { display: flex; gap: 16px; margin-top: 12px; font: 400 12px/1 var(--mono); color: var(--muted); }
+.k::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.k.no::before { background: var(--bad); }
 .k.yes::before { background: var(--accent); }
-.bars { display: grid; gap: 22px; }
+.bars { display: grid; gap: 20px; }
+.bar { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
 .bar-top { display: flex; justify-content: space-between; font-weight: 600; }
-.bar-top span:last-child { font: 500 14px/1.6 var(--mono); font-variant-numeric: tabular-nums; }
-.track { height: 10px; border-radius: 5px; background: var(--alert-soft); margin-top: 6px; overflow: hidden; }
-.track i { display: block; height: 100%; background: var(--accent); border-radius: 5px; }
-.bar p { font-size: 14px; color: var(--muted); margin-top: 8px; }
+.bar-top span:last-child { font: 600 14px/1.6 var(--mono); font-variant-numeric: tabular-nums; }
+.track { height: 8px; border-radius: 4px; background: var(--bad-soft); margin-top: 8px; overflow: hidden; }
+.track i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.bar p { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
 
-details.reco { margin-top: 36px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+details.reco { margin-top: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
 details.reco summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
-  gap: 12px; padding: 16px; font: 750 19px/1.3 var(--display); font-stretch: 85%; }
+  gap: 12px; padding: 16px 18px; font: 750 19px/1.3 var(--display); font-stretch: 85%; }
 details.reco summary::-webkit-details-marker { display: none; }
 details.reco summary .label { white-space: nowrap; }
 details.reco summary .label::after { content: " +"; }
 details.reco[open] summary .label::after { content: " −"; }
 details.reco[open] summary { border-bottom: 1px solid var(--line); }
-.prio { list-style: none; margin: 0; padding: 0 16px; display: grid; }
+.prio { list-style: none; margin: 0; padding: 0 18px; display: grid; }
 .prio li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; padding-block: 14px; border-top: 1px solid var(--line); }
 .prio li:first-child { border-top: 0; }
-.prio .p { align-self: start; justify-self: start; font: 600 12px/1 var(--mono); padding: 6px 7px; border-radius: 4px; margin-top: 3px; }
-.prio .p1 { background: var(--alert); color: var(--surface); }
-.prio .p2 { background: var(--alert-soft); color: var(--alert); }
-.prio .p3 { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.prio .p { align-self: start; justify-self: start; font: 600 12px/1 var(--mono); padding: 6px 7px; border-radius: 5px; margin-top: 2px; }
+.prio .p1 { background: var(--bad); color: var(--surface); }
+.prio .p2 { background: var(--warn-soft); color: var(--warn); }
+.prio .p3 { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
 .prio h4 { margin: 0; font: 600 16px/1.35 var(--body); }
 .prio p { font-size: 14px; color: var(--muted); margin-top: 2px; }
 
-/* compétences */
-.skills { display: grid; gap: 18px; }
-.skill h3 { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: 14px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
-.chip.key { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); font-weight: 500; }
-.plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.plain li { padding-left: 18px; position: relative; }
-.plain li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--accent); }
+/* Compétences */
+.skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.skill { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.skill h3 { font: 600 12px/1.4 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.skills-wrap { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 40px; }
 
-/* recherche + contact */
-.search { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
-.search p { max-width: 58ch; }
+/* Recherche + contact */
+.search { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.search p { color: var(--muted); max-width: 58ch; }
 .targets { display: grid; gap: 10px; }
-.target { display: flex; justify-content: space-between; gap: 12px; padding: 14px 16px; background: var(--surface);
-  border: 1px solid var(--line); border-radius: 6px; font-weight: 500; }
-.target span { font: 400 13px/1.6 var(--mono); color: var(--muted); text-align: right; }
-
-.contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.c { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 10px; min-width: 0; align-content: start; }
+.target { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 16px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px; font-weight: 600; }
+.target span { font: 400 12.5px/1.5 var(--mono); color: var(--muted); text-align: right; }
+.contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+.c { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 10px;
+  min-width: 0; align-content: start; box-shadow: var(--shadow); }
 .c .v { font: 500 16px/1.4 var(--mono); overflow-wrap: anywhere; color: var(--fg); text-decoration: none; }
-.c a.v:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.c a.v:hover { color: var(--accent); text-decoration: underline; }
 .c .acts { display: flex; flex-wrap: wrap; gap: 8px; }
 .c .acts .btn { font-size: 13px; padding: 8px 11px; }
 .cv-row { margin-top: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
-  padding: 16px; border: 1px dashed var(--line); border-radius: 6px; }
+  padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: var(--radius); }
 .cv-row p { color: var(--muted); font-size: 15px; }
 
-footer { padding-block: 32px 48px; border-top: 1px solid var(--line); font: 400 13px/1.5 var(--mono); color: var(--muted);
+footer { padding-block: 28px 44px; border-top: 1px solid var(--line); font: 400 13px/1.5 var(--mono); color: var(--muted);
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 footer a { color: var(--muted); }
 
-@media (max-width: 1080px) {
-  .top nav { display: none; }
+/* Responsive */
+@media (max-width: 1000px) {
+  .flow, .flow.five, .flow.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .media { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .media-text { grid-column: 1 / -1; }
+  .profile-band { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .profile-band .pb-cell:nth-child(4) { border-left: 0; }
+  .profile-band .pb-cell:nth-child(n+4) { border-top: 1px solid var(--line); }
 }
-@media (max-width: 820px) {
-  .hero, .case-intro, .dossier, .search { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .rules, .contact { grid-template-columns: minmax(0, 1fr); }
-  .audit-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .hero { padding-block: 36px 44px; }
-  section.block { padding-block: 44px; }
+@media (max-width: 860px) {
+  .hero, .two-col, .path, .audit-grid, .search, .skills-wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .hero { padding-block: 36px 32px; }
+  .rules, .contact, .pillars { grid-template-columns: minmax(0, 1fr); }
+  .kpis.four, .benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  section.sec { padding-block: 52px; }
+  .profile-band { margin-bottom: 52px; }
 }
-@media (max-width: 420px) {
-  .top .id { font-size: 12px; }
-  .top .id .long { display: none; }
-  .facts.three .fact { padding: 14px 10px; }
-  .facts.three .fact b { font-size: 28px; }
-  .controls { grid-template-columns: minmax(0, 1fr); }
-  .steps li { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; }
+@media (max-width: 560px) {
+  .hero-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-metric:nth-child(3) { padding-left: 0; border-left: 0; }
+  .hero-metric:nth-child(n+3) { padding-top: 14px; }
+  .profile-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .profile-band .pb-cell:nth-child(n) { border-left: 0; border-top: 1px solid var(--line); }
+  .profile-band .pb-cell:nth-child(-n+2) { border-top: 0; }
+  .profile-band .pb-cell:nth-child(even) { border-left: 1px solid var(--line); }
+  .media { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .media figure:first-child { grid-column: 1 / -1; max-width: 280px; }
+  .matrix, .skills-grid, .benefits, .kpis.three, .flow, .flow.five, .flow.four { grid-template-columns: minmax(0, 1fr); }
+  .kpis.three .kpi { display: flex; align-items: baseline; gap: 12px; }
+  .kpis.three .kpi span { margin-top: 0; }
+  .alert-row { grid-template-columns: 54px minmax(0, 1fr); }
+  .alert-row .ts { display: none; }
+  .cta .btn { flex: 1 1 auto; }
   .prio li { grid-template-columns: 40px minmax(0, 1fr); gap: 10px; }
-  .cta .btn { flex: 1 1 auto; justify-content: center; }
 }
 
-/* impression / enregistrement en PDF */
+/* Impression / enregistrement en PDF */
 @media print {
   :root, :root[data-theme="dark"] {
-    --bg: #fff; --surface: #fff; --fg: #000; --muted: #333; --line: #bbb;
-    --accent: #0A6F64; --accent-soft: #fff; --alert: #8a4e00; --alert-soft: #fff;
-    --code-bg: #f4f6f7; --code-fg: #000; --code-tag: #0A6F64; --code-attr: #8a4e00; --code-com: #555;
+    --bg: #fff; --bg-2: #fff; --surface: #fff; --surface-2: #fff; --fg: #000; --muted: #333; --line: #bbb; --line-strong: #999;
+    --accent: #0A6F64; --accent-soft: #fff; --warn: #8a4e00; --warn-soft: #fff; --bad: #a11; --bad-soft: #fff;
+    --console-bg: #f4f6f7; --console-fg: #000; --console-dim: #555; --code-tag: #0A6F64; --code-attr: #8a4e00; --shadow: none; --shadow-lg: none;
     color-scheme: light;
   }
-  body { font-size: 11pt; }
-  .topbar, .cta, .theme, .c .acts, .cv-row, .rule .see, .skip, .status::before, .demo video { display: none !important; }
-  .hero { padding-block: 0 24px; }
-  section.block { padding-block: 24px; }
-  .record, .fact, .rule, .entry, .controls li, .bar, .c, .target, .code, .prio li, .steps li { break-inside: avoid; }
+  .topbar, .cta, .theme, .c .acts, .cv-row, .rule .see, .skip, .copy-code, .console, .media { display: none !important; }
+  .hero { grid-template-columns: 1fr; padding-block: 0 20px; }
+  section.sec { padding-block: 24px; }
   .code-panel[hidden] { display: block !important; }
-  .code-panel + .code-panel { border-top: 1px solid var(--line); }
   details.reco > .prio { display: grid !important; }
-  details.reco summary .label { display: none; }
-  .c a.v::after { content: ""; }
   a { color: inherit; text-decoration: none; }
 }
 </style>
@@ -376,15 +458,15 @@ footer a { color: var(--muted); }
 
 <div class="topbar">
   <div class="wrap top">
-    <a class="id" href="#">C. LUVUNGA MAYEDI<span class="long"> · Cybersécurité</span></a>
-    <div class="right">
-      <nav aria-label="Sections">
+    <a class="brand" href="#"><span class="brand-mark" aria-hidden="true">CLM</span><span>C. LUVUNGA MAYEDI</span></a>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Sections">
         <a href="#projet">Projet</a>
         <a href="#safevault">SafeVault</a>
         <a href="#launchhub">LaunchHub</a>
         <a href="#parcours">Parcours</a>
         <a href="#audit">Audit</a>
-        <a href="#cyberformation">Cybersécurité</a>
+        <a href="#cyberformation">Formation</a>
         <a href="#competences">Compétences</a>
       </nav>
       <button class="theme" type="button" id="theme" aria-label="Changer de thème (clair / sombre)">
@@ -399,8 +481,8 @@ footer a { color: var(--muted); }
 <div class="wrap">
   <header class="hero">
     <div>
-      <span class="status">Recherche d'alternance · disponible immédiatement</span>
-      <h1>Christian Luvunga Mayedi<br><span>Analyste en cybersécurité</span></h1>
+      <span class="status"><span class="dot" aria-hidden="true"></span>Recherche d'alternance · disponible immédiatement</span>
+      <h1>Christian Luvunga Mayedi<span class="role">Analyste en cybersécurité</span></h1>
       <p class="lede">Étudiant en <strong>Master 2 ERIS</strong> à ORT Toulouse, je recherche une alternance en
         sécurité des systèmes d'information. J'ai déployé un <strong>SIEM Wazuh</strong> en entreprise avec mes
         propres règles de détection, sécurisé un annuaire <strong>Active Directory</strong> et mené la refonte
@@ -414,55 +496,92 @@ footer a { color: var(--muted); }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
           Télécharger mon CV (PDF)</a>
       </div>
+      <div class="hero-metrics" aria-label="En bref">
+        <div class="hero-metric"><b>6 ans</b><span>en informatique, dont support et MCO en production</span></div>
+        <div class="hero-metric"><b>5</b><span>machines critiques supervisées par Wazuh</span></div>
+        <div class="hero-metric"><b>3</b><span>règles de détection écrites sur mesure</span></div>
+        <div class="hero-metric"><b>2</b><span>applications en ligne : SafeVault et LaunchHub</span></div>
+      </div>
     </div>
-    <aside class="record" aria-label="Fiche candidat">
-      <header><span class="label">Fiche candidat</span><span class="label">2026–2027</span></header>
-      <dl>
-        <dt>Contrat</dt><dd>Contrat de professionnalisation</dd>
-        <dt>Formation</dt><dd>Master 2 ERIS – ORT Toulouse</dd>
-        <dt>Expérience</dt><dd class="hl">6 ans en informatique</dd>
-        <dt>Postes</dt><dd>Analyste SOC, analyste sécurité, admin. sécurité</dd>
-        <dt>Lieu</dt><dd>Toulouse et alentours</dd>
-        <dt>Signature</dt><dd>Contrat à signer d'ici le 31 décembre 2026</dd>
-        <dt>Langues</dt><dd>Français C1 · Anglais B2</dd>
-      </dl>
+
+    <aside class="console" aria-label="Aperçu : exemples d'alertes produites par mes règles de détection">
+      <div class="console-bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>wazuh · alertes · exemple</span>
+        <span class="live">simulé</span>
+      </div>
+      <div class="console-body">
+        <div class="alert-row hl">
+          <span class="ts">09:42:17</span><span class="lvl hi">niv. 10</span>
+          <span class="msg">Force brute probable sur le compte j.martin
+            <span class="meta">règle <b>100100</b> · 8 échecs 4625 en 2 min · MITRE <b>T1110</b></span></span>
+        </div>
+        <div class="alert-row">
+          <span class="ts">10:05:03</span><span class="lvl md">niv. 8</span>
+          <span class="msg">Compte svc-backup créé par admin.local
+            <span class="meta">règle <b>100101</b> · événement 4720 · MITRE <b>T1136</b></span></span>
+        </div>
+        <div class="alert-row">
+          <span class="ts">11:18:56</span><span class="lvl hi">niv. 10</span>
+          <span class="msg">Stratégie de groupe modifiée par admin.local
+            <span class="meta">règle <b>100102</b> · événement 5136 · MITRE <b>T1484.001</b></span></span>
+        </div>
+        <div class="alert-row">
+          <span class="ts">11:19:40</span><span class="lvl lo">triage</span>
+          <span class="msg">Vérification : changement prévu ? ticket ? auteur habituel ?
+            <span class="meta">qualification · documentation · escalade si besoin</span></span>
+        </div>
+      </div>
+      <div class="console-foot"><span>Données fictives, à titre d'illustration</span><a href="#regles" style="color:inherit">Voir les règles ↓</a></div>
     </aside>
   </header>
 
-  <section class="block" id="projet">
+  <dl class="profile-band" aria-label="Fiche candidat">
+    <div class="pb-cell"><dt>Contrat</dt><dd>Contrat de professionnalisation</dd></div>
+    <div class="pb-cell"><dt>Formation</dt><dd>Master 2 ERIS – ORT Toulouse</dd></div>
+    <div class="pb-cell"><dt>Postes</dt><dd>Analyste SOC, analyste sécurité, admin. sécurité</dd></div>
+    <div class="pb-cell"><dt>Lieu</dt><dd>Toulouse et alentours</dd></div>
+    <div class="pb-cell"><dt>Signature</dt><dd class="hl">Contrat à signer d'ici le 31 décembre 2026</dd></div>
+    <div class="pb-cell"><dt>Langues</dt><dd>Français C1 · Anglais B2</dd></div>
+  </dl>
+</div>
+
+<section class="sec" id="projet">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="label">Projet phare · INAPSI · 2025–2026</span>
+      <span class="kicker">Projet phare · INAPSI · 2025–2026</span>
       <h2>Refonte complète d'un système d'information</h2>
     </div>
-    <div class="case-intro">
-      <div>
+    <div class="two-col">
+      <div class="prose">
+        <div class="badges"><span class="badge on">Wazuh</span><span class="badge on">Active Directory</span><span class="badge">Proxmox VE</span><span class="badge">ZFS</span><span class="badge">GPO</span></div>
         <p>Chez INAPSI, à Toulouse, j'ai mené la refonte complète du système d'information, de l'audit
           initial jusqu'à la formation des utilisateurs.</p>
         <p>Le projet visait deux choses : centraliser la gestion des comptes et des postes, et surveiller
           les machines critiques pour repérer les comportements suspects.</p>
       </div>
-      <div class="facts" aria-label="Le projet en chiffres">
-        <div class="fact"><b>5</b><span>machines critiques supervisées par Wazuh</span></div>
-        <div class="fact"><b>3</b><span>règles de détection écrites sur mesure</span></div>
-        <div class="fact"><b>12</b><span>comptes migrés vers Active Directory</span></div>
-        <div class="fact"><b>5</b><span>GPO pour encadrer les accès</span></div>
+      <div class="kpis" aria-label="Le projet en chiffres">
+        <div class="kpi"><b>5</b><span>machines critiques supervisées par Wazuh</span></div>
+        <div class="kpi"><b>3</b><span>règles de détection écrites sur mesure</span></div>
+        <div class="kpi"><b>12</b><span>comptes migrés vers Active Directory</span></div>
+        <div class="kpi"><b>5</b><span>GPO pour encadrer les accès</span></div>
       </div>
     </div>
 
-    <ol class="steps">
-      <li><div><h3>Audit de l'existant</h3>
-        <p>Inventaire de 7 postes, 1 imprimante et 2 abonnements (OVH, SFR), puis rédaction d'un cahier des charges de 12 pages.</p></div></li>
-      <li><div><h3>Socle de virtualisation</h3>
-        <p>Déploiement d'un serveur Dell T440 (20 cœurs, 64 Go ECC, RAID 1) sous Proxmox VE 8.x avec ZFS ; création de 5 machines virtuelles et 1 conteneur.</p></div></li>
-      <li><div><h3>Centralisation des identités</h3>
-        <p>Migration de 12 comptes utilisateurs et 7 postes vers Active Directory ; création de 5 unités d'organisation et 5 GPO pour encadrer les accès.</p></div></li>
-      <li><div><h3>Supervision de sécurité</h3>
-        <p>Déploiement du SIEM Wazuh sur les 5 machines les plus critiques et écriture de règles de détection adaptées au contexte de l'entreprise.</p></div></li>
-      <li><div><h3>Documentation et transmission</h3>
-        <p>Rédaction de la documentation technique et formation des équipes utilisatrices.</p></div></li>
+    <ol class="flow five">
+      <li><h3>Audit de l'existant</h3>
+        <p>Inventaire de 7 postes, 1 imprimante et 2 abonnements (OVH, SFR), puis rédaction d'un cahier des charges de 12 pages.</p></li>
+      <li><h3>Socle de virtualisation</h3>
+        <p>Déploiement d'un serveur Dell T440 (20 cœurs, 64 Go ECC, RAID 1) sous Proxmox VE 8.x avec ZFS ; création de 5 machines virtuelles et 1 conteneur.</p></li>
+      <li><h3>Centralisation des identités</h3>
+        <p>Migration de 12 comptes utilisateurs et 7 postes vers Active Directory ; création de 5 unités d'organisation et 5 GPO pour encadrer les accès.</p></li>
+      <li><h3>Supervision de sécurité</h3>
+        <p>Déploiement du SIEM Wazuh sur les 5 machines les plus critiques et écriture de règles de détection adaptées au contexte de l'entreprise.</p></li>
+      <li><h3>Documentation et transmission</h3>
+        <p>Rédaction de la documentation technique et formation des équipes utilisatrices.</p></li>
     </ol>
 
-    <div class="rules-head">
+    <div class="rules-head" id="regles">
       <h3>Les 3 règles de détection Wazuh</h3>
       <span class="label">technique MITRE ATT&amp;CK · cliquez pour voir l'exemple</span>
     </div>
@@ -487,11 +606,12 @@ footer a { color: var(--muted); }
       </button>
     </div>
 
-    <p class="code-note"><strong>Exemple simplifié.</strong> Ces extraits illustrent la logique de détection
+    <p class="note"><strong>Exemple simplifié.</strong> Ces extraits illustrent la logique de détection
       que j'ai mise en place. Ce ne sont pas une copie exacte des règles déployées chez INAPSI : identifiants
       et seuils sont donnés à titre indicatif, et chaque ligne est commentée.</p>
     <div class="code">
-      <div class="code-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>local_rules.xml · exemple simplifié</span></div>
+      <div class="code-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="right"><span>local_rules.xml · exemple simplifié</span><button class="copy-code" type="button" id="copy-code">Copier</button></span></div>
 <div class="code-panel" id="rule-1" role="tabpanel" aria-labelledby="tab-1"><pre><code><span class="cm">&lt;!-- Objectif : repérer quelqu'un qui essaie de deviner un mot de passe --&gt;</span>
 <span class="cm">&lt;!-- Déclenchement : 8 échecs de connexion sur le même compte en 2 minutes --&gt;</span>
 <span class="tg">&lt;rule</span> <span class="at">id=</span>"100100" <span class="at">level=</span>"10" <span class="at">frequency=</span>"8" <span class="at">timeframe=</span>"120"<span class="tg">&gt;</span>
@@ -523,15 +643,18 @@ footer a { color: var(--muted); }
   <span class="tg">&lt;mitre&gt;&lt;id&gt;</span>T1484.001<span class="tg">&lt;/id&gt;&lt;/mitre&gt;</span>
 <span class="tg">&lt;/rule&gt;</span></code></pre></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="safevault">
+<section class="sec tint" id="safevault">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="label">Projet personnel · 2026 · publié sur Google Play</span>
+      <span class="kicker">Projet personnel · 2026 · publié sur Google Play</span>
       <h2>SafeVault : un gestionnaire de mots de passe 100&nbsp;% local</h2>
     </div>
-    <div class="case-intro">
-      <div>
+    <div class="two-col">
+      <div class="prose">
+        <div class="badges"><span class="badge on">AES-256-GCM</span><span class="badge on">Argon2id</span><span class="badge">Android</span><span class="badge">Sécurité par conception</span></div>
         <p>SafeVault est une application Android qui garde mots de passe et notes sensibles uniquement sur le
           téléphone : pas de compte, pas de serveur, pas de publicité, pas de connexion à Internet. J'ai défini les
           exigences de sécurité, piloté le projet de bout en bout et publié l'application sur Google Play.</p>
@@ -544,77 +667,76 @@ footer a { color: var(--muted); }
           <a class="btn ghost" href="https://christianluvunga.github.io/safevault-privacy/" target="_blank" rel="noopener">Politique de confidentialité ↗</a>
         </div>
       </div>
-      <div class="facts" aria-label="SafeVault en chiffres">
-        <div class="fact"><b>0</b><span>permission réseau déclarée (Internet et état du réseau retirés)</span></div>
-        <div class="fact"><b>Argon2id</b><span>dérivation de clé (32&nbsp;Mio, 3 passes)</span></div>
-        <div class="fact"><b>550</b><span>tests automatisés qui passent</span></div>
-        <div class="fact"><b>16</b><span>mots pour la phrase de secours</span></div>
+      <div class="kpis" aria-label="SafeVault en chiffres">
+        <div class="kpi"><b>0</b><span>permission réseau déclarée (Internet et état du réseau retirés)</span></div>
+        <div class="kpi"><b class="word">Argon2id</b><span>dérivation de clé (32&nbsp;Mio, 3 passes)</span></div>
+        <div class="kpi"><b>550</b><span>tests automatisés qui passent</span></div>
+        <div class="kpi"><b>16</b><span>mots pour la phrase de secours</span></div>
       </div>
     </div>
 
-    <figure class="demo">
-      <video controls preload="none" playsinline muted poster="SafeVault_presentation_poster.jpg" aria-label="Vidéo de présentation de SafeVault (34 secondes, sans son)">
-        <source src="SafeVault_presentation.mp4" type="video/mp4">
-        Votre navigateur ne lit pas cette vidéo. <a href="SafeVault_presentation.mp4">Ouvrir la vidéo</a>.
-      </video>
-      <figcaption><strong>SafeVault en 34 secondes.</strong> Liste des comptes, ajout d'une entrée, générateur de mots de passe, sauvegarde chiffrée et verrouillage automatique. La vidéo n'a pas de son : tout est dans les images.</figcaption>
-    </figure>
-
-    <div class="yt">
-      <div class="yt-head">
-        <h3 class="sub-h" style="margin:0">SafeVault sur YouTube</h3>
-        <span class="label">2 vidéos courtes</span>
-      </div>
-      <div class="yt-grid">
-        <figure class="yt-item">
-          <div class="yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/o_ODcPUgTxg" title="SafeVault – vidéo YouTube 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-          <figcaption><a href="https://www.youtube.com/shorts/o_ODcPUgTxg" target="_blank" rel="noopener">Voir sur YouTube ↗</a></figcaption>
-        </figure>
-        <figure class="yt-item">
-          <div class="yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/gOWrQENnMYc" title="SafeVault – vidéo YouTube 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-          <figcaption><a href="https://www.youtube.com/shorts/gOWrQENnMYc" target="_blank" rel="noopener">Voir sur YouTube ↗</a></figcaption>
-        </figure>
-      </div>
+    <div class="media">
+      <figure>
+        <video controls preload="none" playsinline muted poster="SafeVault_presentation_poster.jpg" aria-label="Vidéo de présentation de SafeVault (34 secondes, sans son)">
+          <source src="SafeVault_presentation.mp4" type="video/mp4">
+          Votre navigateur ne lit pas cette vidéo. <a href="SafeVault_presentation.mp4">Ouvrir la vidéo</a>.
+        </video>
+        <figcaption>Présentation · 34 s</figcaption>
+      </figure>
+      <figure>
+        <div class="yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/o_ODcPUgTxg" title="SafeVault – vidéo YouTube 1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <figcaption><a href="https://www.youtube.com/shorts/o_ODcPUgTxg" target="_blank" rel="noopener">Voir sur YouTube ↗</a></figcaption>
+      </figure>
+      <figure>
+        <div class="yt-frame"><iframe src="https://www.youtube-nocookie.com/embed/gOWrQENnMYc" title="SafeVault – vidéo YouTube 2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <figcaption><a href="https://www.youtube.com/shorts/gOWrQENnMYc" target="_blank" rel="noopener">Voir sur YouTube ↗</a></figcaption>
+      </figure>
+      <p class="media-text"><span class="label">En vidéo</span><strong>SafeVault en 34 secondes.</strong> Liste des comptes, ajout d'une entrée,
+        générateur de mots de passe, sauvegarde chiffrée et verrouillage automatique. La vidéo n'a pas de son : tout est
+        dans les images. Deux vidéos courtes sur YouTube complètent la démonstration.</p>
     </div>
 
-    <ol class="steps">
-      <li><div><h3>Modèle de menace simple</h3>
-        <p>Aucune donnée ne quitte l'appareil : sans serveur ni compte, toute une classe de risques (fuite côté serveur, interception réseau, compromission de compte) disparaît par construction.</p></div></li>
-      <li><div><h3>Chiffrement du coffre</h3>
-        <p>Une clé de données aléatoire chiffre le coffre en AES-256-GCM. Cette clé est protégée par le mot de passe maître (Argon2id, 32&nbsp;Mio, 3 passes) et, séparément, par la phrase de secours : changer de mot de passe ne demande pas de tout rechiffrer. Les coffres créés avant cette version sont migrés automatiquement depuis PBKDF2-SHA256, sans perte de données.</p></div></li>
-      <li><div><h3>Protection à l'usage</h3>
-        <p>Verrouillage automatique après 3 minutes et au passage en arrière-plan, délai croissant après des essais de mot de passe erronés, captures d'écran bloquées, presse-papiers effacé après 30 secondes, déverrouillage biométrique en option.</p></div></li>
-      <li><div><h3>Remplissage automatique natif (Autofill Android)</h3>
-        <p>Propose un compte uniquement quand le domaine réel du site correspond exactement à celui enregistré (jamais sur un domaine qui y ressemble), redemande toujours une authentification avant de livrer le mot de passe, et ne peut jamais créer un nouveau compte de lui-même.</p></div></li>
-      <li><div><h3>Réduction de la surface d'attaque</h3>
-        <p>Suppression des permissions Internet et état du réseau, politique de sécurité de contenu qui interdit toute connexion, sauvegarde automatique Android désactivée. Vérifié dans le manifeste fusionné puis sur un téléphone.</p></div></li>
-      <li><div><h3>Publication et conformité</h3>
-        <p>Test fermé de 14 jours avec plus de 12 testeurs, déclaration « Sécurité des données » alignée sur le comportement réel, politique de confidentialité en ligne, fiche Play rédigée sans promesse excessive.</p></div></li>
+    <ol class="flow">
+      <li><h3>Modèle de menace simple</h3>
+        <p>Aucune donnée ne quitte l'appareil : sans serveur ni compte, toute une classe de risques (fuite côté serveur, interception réseau, compromission de compte) disparaît par construction.</p></li>
+      <li><h3>Chiffrement du coffre</h3>
+        <p>Une clé de données aléatoire chiffre le coffre en AES-256-GCM. Cette clé est protégée par le mot de passe maître (Argon2id, 32&nbsp;Mio, 3 passes) et, séparément, par la phrase de secours : changer de mot de passe ne demande pas de tout rechiffrer. Les coffres créés avant cette version sont migrés automatiquement depuis PBKDF2-SHA256, sans perte de données.</p></li>
+      <li><h3>Protection à l'usage</h3>
+        <p>Verrouillage automatique après 3 minutes et au passage en arrière-plan, délai croissant après des essais de mot de passe erronés, captures d'écran bloquées, presse-papiers effacé après 30 secondes, déverrouillage biométrique en option.</p></li>
+      <li><h3>Remplissage automatique natif (Autofill Android)</h3>
+        <p>Propose un compte uniquement quand le domaine réel du site correspond exactement à celui enregistré (jamais sur un domaine qui y ressemble), redemande toujours une authentification avant de livrer le mot de passe, et ne peut jamais créer un nouveau compte de lui-même.</p></li>
+      <li><h3>Réduction de la surface d'attaque</h3>
+        <p>Suppression des permissions Internet et état du réseau, politique de sécurité de contenu qui interdit toute connexion, sauvegarde automatique Android désactivée. Vérifié dans le manifeste fusionné puis sur un téléphone.</p></li>
+      <li><h3>Publication et conformité</h3>
+        <p>Test fermé de 14 jours avec plus de 12 testeurs, déclaration « Sécurité des données » alignée sur le comportement réel, politique de confidentialité en ligne, fiche Play rédigée sans promesse excessive.</p></li>
     </ol>
 
-    <p class="code-note"><strong>Limites assumées.</strong> SafeVault n'a pas fait l'objet d'un audit indépendant et ne protège pas
+    <p class="note"><strong>Limites assumées.</strong> SafeVault n'a pas fait l'objet d'un audit indépendant et ne protège pas
       un téléphone déjà compromis. Il n'y a toujours aucune synchronisation entre appareils : chaque coffre reste local à son
       téléphone, l'export chiffré étant le seul moyen d'en changer. Je les indique ici parce qu'un outil de sécurité
       doit dire ce qu'il ne fait pas.</p>
 
-    <div class="skill" style="margin-top:22px"><h3>Technologies</h3><div class="chips">
+    <div class="tech"><span class="label">Technologies</span><div class="chips">
       <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span>
       <span class="chip">Capacitor</span><span class="chip">Android (Java)</span><span class="chip">AES-256-GCM</span>
       <span class="chip">Argon2id</span><span class="chip">Google Play Console</span></div></div>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="launchhub">
+<section class="sec" id="launchhub">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="label">Projet personnel · 2026 · application en ligne</span>
+      <span class="kicker">Projet personnel · 2026 · application en ligne</span>
       <h2>LaunchHub : la plateforme tout-en-un de pilotage et de lancement de produits</h2>
     </div>
-    <div class="case-intro">
-      <div>
+    <div class="two-col">
+      <div class="prose">
+        <div class="badges"><span class="badge on">Supabase · RLS</span><span class="badge on">Multi-équipes</span><span class="badge">Web + Android</span><span class="badge">IA Gemini</span></div>
         <h3 class="mini">Le constat</h3>
         <p>Lancer un nouveau produit (cosmétique, agroalimentaire, tech, mode, e-commerce) implique de nombreux
           intervenants, des délais critiques et un budget serré. Un simple retard sur un BAT packaging, un oubli
           réglementaire ou un suivi fournisseur manqué peut décaler la sortie de plusieurs semaines et générer des surcoûts.</p>
-        <h3 class="mini" style="margin-top:22px">La solution</h3>
+        <h3 class="mini">La solution</h3>
         <p>Une plateforme centralisée, web et mobile, pour structurer, sécuriser et accélérer les lancements. Les équipes
           marketing, produit et opérations gardent une vue d'ensemble, du brief initial au bilan post-lancement.</p>
         <p>Comme pour SafeVault, le code a été écrit avec l'aide d'outils d'IA. J'ai piloté le projet et relu chaque
@@ -625,14 +747,14 @@ footer a { color: var(--muted); }
       </div>
       <div class="side-stack">
         <div class="panel">
-          <h3 class="mini">IA copilote intégrée (Google Gemini)</h3>
+          <h3>IA copilote intégrée (Google Gemini)</h3>
           <ul class="plain">
             <li><strong>Documents en un clic :</strong> briefs créatifs et packaging, cahiers des charges, e-mails de relance ou de négociation fournisseurs, bilans.</li>
             <li><strong>Radar anti-retard :</strong> détection des risques de dérapage et checklist des points souvent oubliés (mentions légales, codes-barres, influenceurs).</li>
           </ul>
         </div>
         <div class="panel">
-          <h3 class="mini">Mobilité et intégrations</h3>
+          <h3>Mobilité et intégrations</h3>
           <ul class="plain">
             <li><strong>Application Android :</strong> suivi des projets, validations et alertes en déplacement.</li>
             <li><strong>Connectée aux outils :</strong> notifications Slack, synchronisation Notion, données hébergées sur Supabase.</li>
@@ -665,130 +787,135 @@ footer a { color: var(--muted); }
 
     <h3 class="sub-h">Les bénéfices</h3>
     <div class="benefits">
-      <div><b>Moins de retards</b><span>Les blocages sont repérés tôt grâce au radar IA.</span></div>
-      <div><b>Budget maîtrisé</b><span>Les écarts apparaissent avant de déraper.</span></div>
-      <div><b>Équipes alignées</b><span>Marketing, packaging, R&amp;D et fournisseurs partagent une seule source de vérité.</span></div>
-      <div><b>Gain de temps</b><span>La rédaction des briefs, cahiers des charges et relances est automatisée.</span></div>
+      <div class="benefit"><b>Moins de retards</b><span>Les blocages sont repérés tôt grâce au radar IA.</span></div>
+      <div class="benefit"><b>Budget maîtrisé</b><span>Les écarts apparaissent avant de déraper.</span></div>
+      <div class="benefit"><b>Équipes alignées</b><span>Marketing, packaging, R&amp;D et fournisseurs partagent une seule source de vérité.</span></div>
+      <div class="benefit"><b>Gain de temps</b><span>La rédaction des briefs, cahiers des charges et relances est automatisée.</span></div>
     </div>
 
     <div class="sec-sub">
-      <h3 class="sub-h" style="margin-top:0">Sécurité : une application multi-équipes</h3>
-      <p class="sub-lede">Chaque équipe ne doit voir que ses propres données, et aucun secret ne doit se trouver dans le navigateur.</p>
+      <h3 class="sub-h">Sécurité : une application multi-équipes</h3>
+      <p>Chaque équipe ne doit voir que ses propres données, et aucun secret ne doit se trouver dans le navigateur.</p>
+      <div class="kpis four" aria-label="LaunchHub, sécurité en chiffres">
+        <div class="kpi"><b>27</b><span>règles d'accès (RLS) dans la base de données</span></div>
+        <div class="kpi"><b>4</b><span>rôles : propriétaire, admin, membre, lecteur</span></div>
+        <div class="kpi"><b>30</b><span>requêtes IA maximum par utilisateur et par jour</span></div>
+        <div class="kpi"><b>0</b><span>clé secrète dans le navigateur</span></div>
+      </div>
+      <ol class="flow">
+        <li><h3>Cloisonnement des équipes</h3>
+          <p>Chaque donnée appartient à un espace de travail. Des règles RLS dans PostgreSQL ne laissent lire que les espaces dont on est membre, et le rôle lecteur ne peut rien modifier. Le contrôle se fait dans la base, pas seulement dans l'interface.</p></li>
+        <li><h3>Secrets côté serveur</h3>
+          <p>Les clés de l'IA, de Slack et de Notion restent dans des fonctions serveur. À chaque appel, la fonction vérifie la session de l'utilisateur, son appartenance à l'espace et son rôle avant d'agir.</p></li>
+        <li><h3>Limitation des abus</h3>
+          <p>Quota de 30 requêtes IA par jour et par utilisateur, taille des textes envoyés à l'IA plafonnée, création d'espaces validée et limitée à 10 par compte.</p></li>
+        <li><h3>Fichiers protégés</h3>
+          <p>Les pièces jointes sont rangées dans un stockage privé, par espace : 10 Mo maximum, images et PDF uniquement, et accès par des liens signés de courte durée.</p></li>
+        <li><h3>Protection dans le navigateur</h3>
+          <p>Politique de sécurité de contenu (CSP) stricte, HSTS, protection contre l'affichage dans un cadre (clickjacking), et liens saisis filtrés pour bloquer les adresses <code>javascript:</code>.</p></li>
+        <li><h3>Durcissement de la base</h3>
+          <p>Correction des alertes du Security Advisor de Supabase, aucun accès aux tables pour les visiteurs non connectés, et retrait des droits inutiles qui permettraient de contourner les règles RLS.</p></li>
+      </ol>
+      <p class="note"><strong>Limites assumées.</strong> LaunchHub n'a pas fait l'objet d'un audit indépendant ni d'un
+        test d'intrusion. Le durcissement repose sur les outils d'analyse de Supabase et sur ma propre relecture.</p>
     </div>
-    <div class="facts four" aria-label="LaunchHub, sécurité en chiffres">
-      <div class="fact"><b>27</b><span>règles d'accès (RLS) dans la base de données</span></div>
-      <div class="fact"><b>4</b><span>rôles : propriétaire, admin, membre, lecteur</span></div>
-      <div class="fact"><b>30</b><span>requêtes IA maximum par utilisateur et par jour</span></div>
-      <div class="fact"><b>0</b><span>clé secrète dans le navigateur</span></div>
-    </div>
-    <ol class="steps" style="margin-top:20px">
-      <li><div><h3>Cloisonnement des équipes</h3>
-        <p>Chaque donnée appartient à un espace de travail. Des règles RLS dans PostgreSQL ne laissent lire que les espaces dont on est membre, et le rôle lecteur ne peut rien modifier. Le contrôle se fait dans la base, pas seulement dans l'interface.</p></div></li>
-      <li><div><h3>Secrets côté serveur</h3>
-        <p>Les clés de l'IA, de Slack et de Notion restent dans des fonctions serveur. À chaque appel, la fonction vérifie la session de l'utilisateur, son appartenance à l'espace et son rôle avant d'agir.</p></div></li>
-      <li><div><h3>Limitation des abus</h3>
-        <p>Quota de 30 requêtes IA par jour et par utilisateur, taille des textes envoyés à l'IA plafonnée, création d'espaces validée et limitée à 10 par compte.</p></div></li>
-      <li><div><h3>Fichiers protégés</h3>
-        <p>Les pièces jointes sont rangées dans un stockage privé, par espace : 10 Mo maximum, images et PDF uniquement, et accès par des liens signés de courte durée.</p></div></li>
-      <li><div><h3>Protection dans le navigateur</h3>
-        <p>Politique de sécurité de contenu (CSP) stricte, HSTS, protection contre l'affichage dans un cadre (clickjacking), et liens saisis filtrés pour bloquer les adresses <code>javascript:</code>.</p></div></li>
-      <li><div><h3>Durcissement de la base</h3>
-        <p>Correction des alertes du Security Advisor de Supabase, aucun accès aux tables pour les visiteurs non connectés, et retrait des droits inutiles qui permettraient de contourner les règles RLS.</p></div></li>
-    </ol>
 
-    <p class="code-note"><strong>Limites assumées.</strong> LaunchHub n'a pas fait l'objet d'un audit indépendant ni d'un
-      test d'intrusion. Le durcissement repose sur les outils d'analyse de Supabase et sur ma propre relecture.</p>
-
-    <div class="skill" style="margin-top:22px"><h3>Technologies</h3><div class="chips">
+    <div class="tech"><span class="label">Technologies</span><div class="chips">
       <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span>
       <span class="chip">Supabase (PostgreSQL)</span><span class="chip">RLS</span><span class="chip">Edge Functions (Deno)</span>
       <span class="chip">Capacitor</span><span class="chip">PWA</span><span class="chip">API Gemini</span></div></div>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="parcours">
-    <div class="dossier">
+<section class="sec tint" id="parcours">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Parcours</span>
+      <h2>Expérience et formation</h2>
+    </div>
+    <div class="path">
       <div>
-        <h2 class="sub">Expérience</h2>
-        <div class="entry">
-          <h3>Chargé d'infrastructure système</h3>
-          <div class="org">INAPSI</div>
-          <div class="meta"><span>2025 – 2026</span><span>Toulouse</span></div>
-          <ul>
-            <li>Refonte complète du SI (<a href="#projet">détail ci-dessus</a>)</li>
-            <li>SIEM Wazuh, Active Directory, Proxmox VE</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <h3>Technicien support informatique <span class="pill">6 ans</span></h3>
-          <div class="org">Régie de Distribution d'Eau de Kinshasa</div>
-          <div class="meta"><span>2017 – 2023</span><span>Kinshasa (RDC)</span></div>
-          <ul>
-            <li>Pilotage du centre de production et maintien en condition opérationnelle du SI</li>
-            <li>Administration de l'ERP e-GEE (facturation) et fiabilisation des bases clients</li>
-            <li>Contrôle de conformité des équipements et suivi des procédures d'audit interne</li>
-            <li>Assistance aux utilisateurs et rédaction de procédures d'exploitation</li>
-          </ul>
-        </div>
+        <h3 class="col-title">Expérience</h3>
+        <ol class="tl">
+          <li class="now">
+            <span class="when">2025 – 2026</span>
+            <h4>Chargé d'infrastructure système</h4>
+            <div class="org">INAPSI</div>
+            <div class="where">Toulouse</div>
+            <ul>
+              <li>Refonte complète du SI (<a href="#projet">détail ci-dessus</a>)</li>
+              <li>SIEM Wazuh, Active Directory, Proxmox VE</li>
+            </ul>
+          </li>
+          <li>
+            <span class="when">2017 – 2023</span>
+            <h4>Technicien support informatique <span class="pill">6 ans</span></h4>
+            <div class="org">Régie de Distribution d'Eau de Kinshasa</div>
+            <div class="where">Kinshasa (RDC)</div>
+            <ul>
+              <li>Pilotage du centre de production et maintien en condition opérationnelle du SI</li>
+              <li>Administration de l'ERP e-GEE (facturation) et fiabilisation des bases clients</li>
+              <li>Contrôle de conformité des équipements et suivi des procédures d'audit interne</li>
+              <li>Assistance aux utilisateurs et rédaction de procédures d'exploitation</li>
+            </ul>
+          </li>
+        </ol>
       </div>
-      <div class="stack">
-        <div>
-          <h2 class="sub">Formation</h2>
-          <div class="entry">
-            <h3>Master 2 ERIS – Expert en Réseaux, Infrastructure et Sécurité</h3>
+      <div>
+        <h3 class="col-title">Formation</h3>
+        <ol class="tl">
+          <li class="now">
+            <span class="when">2026 – 2027</span>
+            <h4>Master 2 ERIS – Expert en Réseaux, Infrastructure et Sécurité</h4>
             <div class="org">ORT Toulouse · en alternance</div>
-            <div class="meta"><span>2026 – 2027</span><span>Toulouse</span></div>
-          </div>
-          <div class="entry">
-            <h3>Master 1 ERIS</h3>
+          </li>
+          <li>
+            <span class="when">2025 – 2026</span>
+            <h4>Master 1 ERIS</h4>
             <div class="org">ORT Toulouse</div>
-            <div class="meta"><span>2025 – 2026</span><span>Toulouse</span></div>
-          </div>
-          <div class="entry">
-            <h3>Licence en Technologies des Réseaux et du Matériel Informatique</h3>
-            <div class="org">Mahatma Gandhi University</div>
-            <div class="meta"><span>2013 – 2016</span><span>Inde</span></div>
+          </li>
+          <li>
+            <span class="when">2013 – 2016</span>
+            <h4>Licence en Technologies des Réseaux et du Matériel Informatique</h4>
+            <div class="org">Mahatma Gandhi University · Inde</div>
             <p class="eq">Équivalence ENIC-NARIC (France) : niveau 6 (Bac+3)</p>
-          </div>
-        </div>
-        <div>
-          <h2 class="sub">Certifications</h2>
-          <div class="entry">
-            <h3>CCNA : Introduction to Networks</h3>
-            <div class="meta"><span>Cisco</span><span>Mars 2026</span></div>
-          </div>
-          <div class="entry">
-            <h3>Certificat professionnel Google en Intelligence Artificielle</h3>
-            <div class="meta"><span>Coursera</span><span>Août 2026</span></div>
-          </div>
+          </li>
+        </ol>
+        <div class="certs" aria-label="Certifications">
+          <span class="label">Certifications</span>
+          <div class="cert"><b>CCNA : Introduction to Networks</b><span>Cisco · mars 2026</span></div>
+          <div class="cert"><b>Certificat professionnel Google en Intelligence Artificielle</b><span>Coursera · août 2026</span></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="audit">
+<section class="sec" id="audit">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="label">Travail pratique · cours de cybersécurité · entreprise fictive</span>
+      <span class="kicker">Travail pratique · cours de cybersécurité · entreprise fictive</span>
       <h2>Audit de sécurité interne : Botium Toys</h2>
     </div>
-    <div class="case-intro">
-      <div>
+    <div class="two-col">
+      <div class="prose">
         <p>Botium Toys est un fabricant et revendeur de jouets fictif, utilisé comme cas d'étude. À partir du
           rapport de périmètre et d'évaluation des risques fourni, j'ai audité son programme de sécurité :
           actifs, réseau interne, systèmes, contrôles et conformité.</p>
         <p>J'ai rempli la liste de vérification des contrôles et de la conformité, puis rédigé des
           recommandations classées par priorité, en m'appuyant sur la fonction « Identifier » du NIST CSF.</p>
       </div>
-      <div class="facts three" aria-label="L'audit en chiffres">
-        <div class="fact"><b>8/10</b><span>score de risque initial</span></div>
-        <div class="fact"><b>6/14</b><span>contrôles en place</span></div>
-        <div class="fact"><b>4/12</b><span>bonnes pratiques conformes</span></div>
+      <div class="kpis three" aria-label="L'audit en chiffres">
+        <div class="kpi"><b>8/10</b><span>score de risque initial</span></div>
+        <div class="kpi"><b>6/14</b><span>contrôles en place</span></div>
+        <div class="kpi"><b>4/12</b><span>bonnes pratiques conformes</span></div>
       </div>
     </div>
 
     <div class="audit-grid">
       <div>
-        <h3 class="mini">Évaluation des contrôles</h3>
-        <ul class="controls">
+        <h3 class="mini-h">Évaluation des contrôles</h3>
+        <ul class="matrix">
           <li class="no">Moindre privilège</li>
           <li class="no">Plan de reprise après sinistre</li>
           <li class="no">Politique de mots de passe conforme</li>
@@ -807,7 +934,7 @@ footer a { color: var(--muted); }
         <p class="legend"><span class="k no">Absent</span><span class="k yes">En place</span></p>
       </div>
       <div>
-        <h3 class="mini">Conformité par référentiel</h3>
+        <h3 class="mini-h">Conformité par référentiel</h3>
         <div class="bars">
           <div class="bar"><div class="bar-top"><span>PCI DSS</span><span>0 / 4</span></div>
             <div class="track"><i style="width:0%"></i></div>
@@ -839,15 +966,18 @@ footer a { color: var(--muted); }
           <p>Calendrier de surveillance et de maintenance, et méthodes d'intervention clairement définies.</p></div></li>
       </ol>
     </details>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="cyberformation">
+<section class="sec tint" id="cyberformation">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="label">Formation continue · Master 2 ERIS · labo pratique en machines virtuelles</span>
+      <span class="kicker">Formation continue · Master 2 ERIS · labo pratique en machines virtuelles</span>
       <h2>Analyste en cybersécurité : programme pratique en 12 semaines</h2>
     </div>
-    <div class="case-intro">
-      <div>
+    <div class="two-col">
+      <div class="prose">
+        <div class="badges"><span class="badge on">NIST SP 800-61</span><span class="badge on">MITRE ATT&amp;CK</span><span class="badge">Kali Linux</span><span class="badge">Ubuntu Server</span><span class="badge">Sigma</span></div>
         <p>En parallèle de mon alternance, je suis un programme pratique de 20 chapitres construit autour d'un
           labo VirtualBox (Kali Linux, Ubuntu Server, Windows) : audit et durcissement système, réponse à
           incident selon le cadre <strong>NIST SP 800-61</strong>, évaluation des risques et détection via
@@ -858,67 +988,70 @@ footer a { color: var(--muted); }
           <a class="btn primary" href="https://github.com/christianluvunga/hardening-scripts" target="_blank" rel="noopener">Voir le script de durcissement sur GitHub ↗</a>
         </div>
       </div>
-      <div class="facts" aria-label="Le programme en chiffres">
-        <div class="fact"><b>20</b><span>chapitres au programme, sur 12 semaines</span></div>
-        <div class="fact"><b>800-61</b><span>cadre NIST suivi pour la réponse à incident</span></div>
-        <div class="fact"><b>100&nbsp;%</b><span>score aux quiz de validation passés à ce jour</span></div>
-        <div class="fact"><b>ATT&amp;CK</b><span>cartographie MITRE utilisée pour la détection</span></div>
+      <div class="kpis" aria-label="Le programme en chiffres">
+        <div class="kpi"><b>20</b><span>chapitres au programme, sur 12 semaines</span></div>
+        <div class="kpi"><b class="word">800-61</b><span>cadre NIST suivi pour la réponse à incident</span></div>
+        <div class="kpi"><b>100&nbsp;%</b><span>score aux quiz de validation passés à ce jour</span></div>
+        <div class="kpi"><b class="word">ATT&amp;CK</b><span>cartographie MITRE utilisée pour la détection</span></div>
       </div>
     </div>
 
-    <ol class="steps">
-      <li><div><h3>Durcissement système et réseau</h3>
+    <ol class="flow four">
+      <li><h3>Durcissement système et réseau</h3>
         <p>Script Bash idempotent de durcissement Ubuntu : SSH par clé uniquement, double authentification
           conditionnelle, pare-feu UFW, fail2ban, compte applicatif à droits minimaux — validé par plusieurs
-          relectures et une connexion SSH + MFA réelle depuis Kali.</p></div></li>
-      <li><div><h3>Réponse à incident</h3>
+          relectures et une connexion SSH + MFA réelle depuis Kali.</p></li>
+      <li><h3>Réponse à incident</h3>
         <p>Cycle complet NIST SP 800-61 sur une machine compromise : triage (comptes, clés SSH, tâches
           planifiées, intégrité des paquets), confinement, éradication, puis rapport d'incident rédigé comme en
-          entreprise.</p></div></li>
-      <li><div><h3>Évaluation des risques</h3>
+          entreprise.</p></li>
+      <li><h3>Évaluation des risques</h3>
         <p>Rapport de risques professionnel (résumé pour la direction, constats, matrice probabilité × impact,
-          recommandations priorisées) produit pour un jalon noté du programme.</p></div></li>
-      <li><div><h3>Détection et renseignement sur la menace</h3>
+          recommandations priorisées) produit pour un jalon noté du programme.</p></li>
+      <li><h3>Détection et renseignement sur la menace</h3>
         <p>Analyse d'e-mails de phishing, règles de détection Sigma, cartographie MITRE ATT&amp;CK Navigator et
-          script Python d'analyse de journaux d'authentification.</p></div></li>
+          script Python d'analyse de journaux d'authentification.</p></li>
     </ol>
 
-    <p class="code-note"><strong>Formation en cours.</strong> Ce programme est suivi en parallèle de mon
+    <p class="note"><strong>Formation en cours.</strong> Ce programme est suivi en parallèle de mon
       alternance ; cette section sera complétée au fil des chapitres restants (sécurité web, durcissement
       Windows, RGPD, OPNsense).</p>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="competences">
-    <div class="dossier">
-      <div>
-        <h2 class="sub">Compétences techniques</h2>
-        <div class="skills">
-          <div class="skill"><h3>Cybersécurité</h3><div class="chips">
-            <span class="chip key">SIEM Wazuh</span><span class="chip key">Règles de détection</span>
-            <span class="chip">MITRE ATT&amp;CK</span><span class="chip">Détection d'intrusion</span><span class="chip">IAM</span>
-            <span class="chip">Sécurisation AD / GPO</span><span class="chip">Audit SI</span><span class="chip">GnuPG</span>
-            <span class="chip">Cryptographie appliquée</span></div></div>
-          <div class="skill"><h3>Gouvernance et conformité</h3><div class="chips">
-            <span class="chip key">NIST CSF</span><span class="chip">PCI DSS</span><span class="chip">RGPD</span>
-            <span class="chip">SOC 1 / SOC 2</span><span class="chip">Évaluation des risques</span></div></div>
-          <div class="skill"><h3>Systèmes et virtualisation</h3><div class="chips">
-            <span class="chip key">Active Directory</span><span class="chip">Windows Server 2022</span>
-            <span class="chip">Linux Debian / Ubuntu</span><span class="chip key">Proxmox VE</span><span class="chip">ZFS</span><span class="chip">Docker</span></div></div>
-          <div class="skill"><h3>Réseaux</h3><div class="chips">
-            <span class="chip">VLAN</span><span class="chip">Segmentation réseau</span><span class="chip">VPN</span>
-            <span class="chip">DNS / DHCP</span><span class="chip">CCNA</span></div></div>
-          <div class="skill"><h3>Supervision et gestion de parc</h3><div class="chips">
-            <span class="chip">Zabbix</span><span class="chip">GLPI</span><span class="chip">ITIL</span><span class="chip">Asset Management</span></div></div>
-          <div class="skill"><h3>Gestion de projet</h3><div class="chips">
-            <span class="chip">Cadrage WBS</span><span class="chip">KPI</span><span class="chip">Cahier des charges</span>
-            <span class="chip">Outils IA</span></div></div>
-          <div class="skill"><h3>Développement</h3><div class="chips">
-            <span class="chip">TypeScript / React</span><span class="chip">Android (Capacitor)</span><span class="chip">Publication Google Play</span></div></div>
-        </div>
+<section class="sec" id="competences">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Compétences</span>
+      <h2>Ce que je sais faire</h2>
+    </div>
+    <div class="skills-wrap">
+      <div class="skills-grid">
+        <div class="skill"><h3>Cybersécurité</h3><div class="chips">
+          <span class="chip key">SIEM Wazuh</span><span class="chip key">Règles de détection</span>
+          <span class="chip">MITRE ATT&amp;CK</span><span class="chip">Détection d'intrusion</span><span class="chip">IAM</span>
+          <span class="chip">Sécurisation AD / GPO</span><span class="chip">Audit SI</span><span class="chip">GnuPG</span>
+          <span class="chip">Cryptographie appliquée</span></div></div>
+        <div class="skill"><h3>Gouvernance et conformité</h3><div class="chips">
+          <span class="chip key">NIST CSF</span><span class="chip">PCI DSS</span><span class="chip">RGPD</span>
+          <span class="chip">SOC 1 / SOC 2</span><span class="chip">Évaluation des risques</span></div></div>
+        <div class="skill"><h3>Systèmes et virtualisation</h3><div class="chips">
+          <span class="chip key">Active Directory</span><span class="chip">Windows Server 2022</span>
+          <span class="chip">Linux Debian / Ubuntu</span><span class="chip key">Proxmox VE</span><span class="chip">ZFS</span><span class="chip">Docker</span></div></div>
+        <div class="skill"><h3>Réseaux</h3><div class="chips">
+          <span class="chip">VLAN</span><span class="chip">Segmentation réseau</span><span class="chip">VPN</span>
+          <span class="chip">DNS / DHCP</span><span class="chip">CCNA</span></div></div>
+        <div class="skill"><h3>Supervision et gestion de parc</h3><div class="chips">
+          <span class="chip">Zabbix</span><span class="chip">GLPI</span><span class="chip">ITIL</span><span class="chip">Asset Management</span></div></div>
+        <div class="skill"><h3>Gestion de projet</h3><div class="chips">
+          <span class="chip">Cadrage WBS</span><span class="chip">KPI</span><span class="chip">Cahier des charges</span>
+          <span class="chip">Outils IA</span></div></div>
+        <div class="skill"><h3>Développement</h3><div class="chips">
+          <span class="chip">TypeScript / React</span><span class="chip">Android (Capacitor)</span><span class="chip">Publication Google Play</span></div></div>
       </div>
-      <div class="stack">
-        <div>
-          <h2 class="sub">Savoir-être</h2>
+      <div class="side-stack">
+        <div class="panel">
+          <h3>Savoir-être</h3>
           <ul class="plain">
             <li>Communication efficace</li>
             <li>Esprit d'analyse et résolution de problèmes</li>
@@ -927,8 +1060,8 @@ footer a { color: var(--muted); }
             <li>Travail en équipe et collaboration</li>
           </ul>
         </div>
-        <div>
-          <h2 class="sub">En dehors du travail</h2>
+        <div class="panel">
+          <h3>En dehors du travail</h3>
           <ul class="plain">
             <li>Veille technologique en cybersécurité</li>
             <li>Musique et technologies numériques : beatmaking, MAO, mixage audio</li>
@@ -936,13 +1069,15 @@ footer a { color: var(--muted); }
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="block" id="contact">
+<section class="sec tint" id="contact">
+  <div class="wrap">
     <div class="search">
       <div>
         <div class="sec-head" style="margin-bottom:16px">
-          <span class="label">Ce que je recherche</span>
+          <span class="kicker">Ce que je recherche</span>
           <h2>Une alternance en cybersécurité à Toulouse</h2>
         </div>
         <p>Mon école me laisse jusqu'au 31 décembre 2026 pour signer mon contrat de professionnalisation.
@@ -987,8 +1122,10 @@ footer a { color: var(--muted); }
       <p>Vous préférez un document à transmettre ? Mon CV tient sur une page.</p>
       <a class="btn ghost" href="CV_Christian_LUVUNGA_MAYEDI_Alternance_Cybersecurite.pdf" download>Télécharger le CV (PDF)</a>
     </div>
-  </section>
+  </div>
+</section>
 
+<div class="wrap">
   <footer>
     <span>Christian Luvunga Mayedi · Toulouse · Portfolio 2026</span>
     <a href="#">Haut de page ↑</a>
@@ -1033,6 +1170,24 @@ document.querySelectorAll("button[data-copy]").forEach(function (btn) {
       if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = tabs[(i - 1 + tabs.length) % tabs.length];
       if (n) { e.preventDefault(); select(n, true); }
     });
+  });
+})();
+
+/* Copier la règle affichée */
+(function () {
+  var btn = document.getElementById("copy-code");
+  if (!btn) return;
+  btn.addEventListener("click", function () {
+    var panel = document.querySelector(".code-panel:not([hidden]) code");
+    if (!panel) return;
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = "Copier"; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(panel);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      done("Ctrl+C");
+    }
+    try { navigator.clipboard.writeText(panel.textContent).then(function () { done("Copié ✓"); }, fallback); }
+    catch (e) { fallback(); }
   });
 })();
 
