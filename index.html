@@ -343,6 +343,7 @@ footer a { color: var(--muted); }
       <nav aria-label="Sections">
         <a href="#projet">Projet</a>
         <a href="#safevault">SafeVault</a>
+        <a href="#launchhub">LaunchHub</a>
         <a href="#parcours">Parcours</a>
         <a href="#audit">Audit</a>
         <a href="#cyberformation">Cybersécurité</a>
@@ -543,6 +544,56 @@ footer a { color: var(--muted); }
       <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span>
       <span class="chip">Capacitor</span><span class="chip">Android (Java)</span><span class="chip">AES-256-GCM</span>
       <span class="chip">PBKDF2</span><span class="chip">Google Play Console</span></div></div>
+  </section>
+
+  <section class="block" id="launchhub">
+    <div class="sec-head">
+      <span class="label">Projet personnel · 2026 · code sur GitHub</span>
+      <h2>LaunchHub : piloter le lancement d'un produit, en équipe</h2>
+    </div>
+    <div class="case-intro">
+      <div>
+        <p>LaunchHub est une application web et Android qui réunit tout ce qu'une équipe marketing suit avant un
+          lancement de produit : projets et étapes, tâches et planning, budget, fournisseurs, packaging et
+          performances. Elle propose aussi un assistant IA (rédaction, analyse des risques d'un projet), des
+          notifications et des liens avec Slack et Notion.</p>
+        <p>Comme pour SafeVault, le code a été écrit avec l'aide d'outils d'IA. J'ai piloté le projet et relu
+          chaque évolution, en m'attachant surtout à la sécurité d'une application multi-équipes : chaque équipe
+          ne doit voir que ses propres données, et aucun secret ne doit se trouver dans le navigateur.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/christianluvunga/LaunchHub" target="_blank" rel="noopener">Voir le code sur GitHub ↗</a>
+        </div>
+      </div>
+      <div class="facts" aria-label="LaunchHub en chiffres">
+        <div class="fact"><b>27</b><span>règles d'accès (RLS) dans la base de données</span></div>
+        <div class="fact"><b>4</b><span>rôles : propriétaire, admin, membre, lecteur</span></div>
+        <div class="fact"><b>30</b><span>requêtes IA maximum par utilisateur et par jour</span></div>
+        <div class="fact"><b>0</b><span>clé secrète dans le navigateur</span></div>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li><div><h3>Cloisonnement des équipes</h3>
+        <p>Chaque donnée appartient à un espace de travail. Des règles RLS dans PostgreSQL ne laissent lire que les espaces dont on est membre, et le rôle lecteur ne peut rien modifier. Le contrôle se fait dans la base, pas seulement dans l'interface.</p></div></li>
+      <li><div><h3>Secrets côté serveur</h3>
+        <p>Les clés de l'IA, de Slack et de Notion restent dans des fonctions serveur. À chaque appel, la fonction vérifie la session de l'utilisateur, son appartenance à l'espace et son rôle avant d'agir.</p></div></li>
+      <li><div><h3>Limitation des abus</h3>
+        <p>Quota de 30 requêtes IA par jour et par utilisateur, taille des textes envoyés à l'IA plafonnée, création d'espaces validée et limitée à 10 par compte.</p></div></li>
+      <li><div><h3>Fichiers protégés</h3>
+        <p>Les pièces jointes sont rangées dans un stockage privé, par espace : 10 Mo maximum, images et PDF uniquement, et accès par des liens signés de courte durée.</p></div></li>
+      <li><div><h3>Protection dans le navigateur</h3>
+        <p>Politique de sécurité de contenu (CSP) stricte, HSTS, protection contre l'affichage dans un cadre (clickjacking), et liens saisis filtrés pour bloquer les adresses <code>javascript:</code>.</p></div></li>
+      <li><div><h3>Durcissement de la base</h3>
+        <p>Correction des alertes du Security Advisor de Supabase, aucun accès aux tables pour les visiteurs non connectés, et retrait des droits inutiles qui permettraient de contourner les règles RLS.</p></div></li>
+    </ol>
+
+    <p class="code-note"><strong>Limites assumées.</strong> LaunchHub n'a pas fait l'objet d'un audit indépendant ni d'un
+      test d'intrusion. Le durcissement repose sur les outils d'analyse de Supabase et sur ma propre relecture.</p>
+
+    <div class="skill" style="margin-top:22px"><h3>Technologies</h3><div class="chips">
+      <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span>
+      <span class="chip">Supabase (PostgreSQL)</span><span class="chip">RLS</span><span class="chip">Edge Functions (Deno)</span>
+      <span class="chip">Capacitor</span><span class="chip">PWA</span><span class="chip">API Gemini</span></div></div>
   </section>
 
   <section class="block" id="parcours">
