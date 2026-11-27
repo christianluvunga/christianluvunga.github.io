@@ -174,6 +174,33 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); }
 .demo figcaption strong { color: var(--fg); font-weight: 600; }
 @media (max-width: 820px) { .demo { grid-template-columns: minmax(0, 1fr); } .demo video { max-width: 320px; } }
 
+/* LaunchHub : piliers, bénéfices, panneaux */
+.side-stack { display: grid; gap: 14px; align-content: start; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
+.panel .mini { font-size: 18px; margin-bottom: 10px; }
+.panel .plain { gap: 10px; font-size: 15px; }
+.panel .plain strong { font-weight: 600; }
+.sub-h { font-family: var(--display); font-size: 22px; font-weight: 750; font-stretch: 85%; margin: 44px 0 14px; }
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+.pillar h4 { margin: 0 0 8px; font: 600 16px/1.3 var(--body); }
+.pillar ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.benefits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.benefits > div { background: var(--surface); padding: 16px; display: grid; gap: 6px; align-content: start; }
+.benefits b { font: 700 18px/1.2 var(--display); font-stretch: 85%; color: var(--accent); }
+.benefits span { font-size: 14px; color: var(--muted); line-height: 1.45; }
+.sec-sub { margin-top: 48px; padding-top: 28px; border-top: 1px dashed var(--line); }
+.sub-lede { color: var(--muted); margin: 0 0 16px; max-width: 65ch; }
+.facts.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 820px) {
+  .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .benefits, .facts.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .pillars, .benefits { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* règles Wazuh : cartes-onglets + code */
 .rules-head { margin-top: 48px; margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; }
 .rules-head h3 { font-size: 22px; font-weight: 750; font-stretch: 85%; }
@@ -548,31 +575,84 @@ footer a { color: var(--muted); }
 
   <section class="block" id="launchhub">
     <div class="sec-head">
-      <span class="label">Projet personnel · 2026 · code sur GitHub</span>
-      <h2>LaunchHub : piloter le lancement d'un produit, en équipe</h2>
+      <span class="label">Projet personnel · 2026 · application en ligne</span>
+      <h2>LaunchHub : la plateforme tout-en-un de pilotage et de lancement de produits</h2>
     </div>
     <div class="case-intro">
       <div>
-        <p>LaunchHub est une application web et Android qui réunit tout ce qu'une équipe marketing suit avant un
-          lancement de produit : projets et étapes, tâches et planning, budget, fournisseurs, packaging et
-          performances. Elle propose aussi un assistant IA (rédaction, analyse des risques d'un projet), des
-          notifications et des liens avec Slack et Notion.</p>
-        <p>Comme pour SafeVault, le code a été écrit avec l'aide d'outils d'IA. J'ai piloté le projet et relu
-          chaque évolution, en m'attachant surtout à la sécurité d'une application multi-équipes : chaque équipe
-          ne doit voir que ses propres données, et aucun secret ne doit se trouver dans le navigateur.</p>
+        <h3 class="mini">Le constat</h3>
+        <p>Lancer un nouveau produit (cosmétique, agroalimentaire, tech, mode, e-commerce) implique de nombreux
+          intervenants, des délais critiques et un budget serré. Un simple retard sur un BAT packaging, un oubli
+          réglementaire ou un suivi fournisseur manqué peut décaler la sortie de plusieurs semaines et générer des surcoûts.</p>
+        <h3 class="mini" style="margin-top:22px">La solution</h3>
+        <p>Une plateforme centralisée, web et mobile, pour structurer, sécuriser et accélérer les lancements. Les équipes
+          marketing, produit et opérations gardent une vue d'ensemble, du brief initial au bilan post-lancement.</p>
+        <p>Comme pour SafeVault, le code a été écrit avec l'aide d'outils d'IA. J'ai piloté le projet et relu chaque
+          évolution, en m'attachant surtout à la sécurité d'une application multi-équipes.</p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/christianluvunga/LaunchHub" target="_blank" rel="noopener">Voir le code sur GitHub ↗</a>
+          <a class="btn primary" href="https://launchhub.luvunga.com/" target="_blank" rel="noopener">Ouvrir LaunchHub ↗</a>
+          <a class="btn ghost" href="https://github.com/christianluvunga/LaunchHub" target="_blank" rel="noopener">Voir le code sur GitHub ↗</a>
         </div>
       </div>
-      <div class="facts" aria-label="LaunchHub en chiffres">
-        <div class="fact"><b>27</b><span>règles d'accès (RLS) dans la base de données</span></div>
-        <div class="fact"><b>4</b><span>rôles : propriétaire, admin, membre, lecteur</span></div>
-        <div class="fact"><b>30</b><span>requêtes IA maximum par utilisateur et par jour</span></div>
-        <div class="fact"><b>0</b><span>clé secrète dans le navigateur</span></div>
+      <div class="side-stack">
+        <div class="panel">
+          <h3 class="mini">IA copilote intégrée (Google Gemini)</h3>
+          <ul class="plain">
+            <li><strong>Documents en un clic :</strong> briefs créatifs et packaging, cahiers des charges, e-mails de relance ou de négociation fournisseurs, bilans.</li>
+            <li><strong>Radar anti-retard :</strong> détection des risques de dérapage et checklist des points souvent oubliés (mentions légales, codes-barres, influenceurs).</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 class="mini">Mobilité et intégrations</h3>
+          <ul class="plain">
+            <li><strong>Application Android :</strong> suivi des projets, validations et alertes en déplacement.</li>
+            <li><strong>Connectée aux outils :</strong> notifications Slack, synchronisation Notion, données hébergées sur Supabase.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <ol class="steps">
+    <h3 class="sub-h">Les 6 piliers fonctionnels</h3>
+    <div class="pillars">
+      <article class="pillar"><h4>Pilotage centralisé</h4><ul>
+        <li>Avancement global des lancements en temps réel</li>
+        <li>Compte à rebours avant mise sur le marché et indicateurs clés</li></ul></article>
+      <article class="pillar"><h4>Planning, jalons et tâches critiques</h4><ul>
+        <li>Suivi par statut : à faire, en cours, validation BAT, terminé</li>
+        <li>Responsables, priorités et dépendances entre tâches</li></ul></article>
+      <article class="pillar"><h4>Contrôle budgétaire et coûts</h4><ul>
+        <li>Dépenses par poste : packaging, R&amp;D, marketing, échantillons, logistique</li>
+        <li>Comparatif prévu / réalisé pour éviter les dépassements</li></ul></article>
+      <article class="pillar"><h4>Packaging, BAT et échantillons</h4><ul>
+        <li>Centralisation des gabarits et fichiers de découpe</li>
+        <li>Validation des épreuves (BAT), éco-labels et codes-barres</li></ul></article>
+      <article class="pillar"><h4>Fournisseurs et approvisionnements</h4><ul>
+        <li>Annuaire des sous-traitants et prestataires</li>
+        <li>Suivi des bons de commande, délais de livraison et notation</li></ul></article>
+      <article class="pillar"><h4>Analyse post-lancement</h4><ul>
+        <li>Chiffre d'affaires et volumes par rapport aux objectifs</li>
+        <li>ROI des campagnes et satisfaction client par canal</li></ul></article>
+    </div>
+
+    <h3 class="sub-h">Les bénéfices</h3>
+    <div class="benefits">
+      <div><b>Moins de retards</b><span>Les blocages sont repérés tôt grâce au radar IA.</span></div>
+      <div><b>Budget maîtrisé</b><span>Les écarts apparaissent avant de déraper.</span></div>
+      <div><b>Équipes alignées</b><span>Marketing, packaging, R&amp;D et fournisseurs partagent une seule source de vérité.</span></div>
+      <div><b>Gain de temps</b><span>La rédaction des briefs, cahiers des charges et relances est automatisée.</span></div>
+    </div>
+
+    <div class="sec-sub">
+      <h3 class="sub-h" style="margin-top:0">Sécurité : une application multi-équipes</h3>
+      <p class="sub-lede">Chaque équipe ne doit voir que ses propres données, et aucun secret ne doit se trouver dans le navigateur.</p>
+    </div>
+    <div class="facts four" aria-label="LaunchHub, sécurité en chiffres">
+      <div class="fact"><b>27</b><span>règles d'accès (RLS) dans la base de données</span></div>
+      <div class="fact"><b>4</b><span>rôles : propriétaire, admin, membre, lecteur</span></div>
+      <div class="fact"><b>30</b><span>requêtes IA maximum par utilisateur et par jour</span></div>
+      <div class="fact"><b>0</b><span>clé secrète dans le navigateur</span></div>
+    </div>
+    <ol class="steps" style="margin-top:20px">
       <li><div><h3>Cloisonnement des équipes</h3>
         <p>Chaque donnée appartient à un espace de travail. Des règles RLS dans PostgreSQL ne laissent lire que les espaces dont on est membre, et le rôle lecteur ne peut rien modifier. Le contrôle se fait dans la base, pas seulement dans l'interface.</p></div></li>
       <li><div><h3>Secrets côté serveur</h3>
