@@ -345,6 +345,7 @@ footer a { color: var(--muted); }
         <a href="#safevault">SafeVault</a>
         <a href="#parcours">Parcours</a>
         <a href="#audit">Audit</a>
+        <a href="#cyberformation">Cybersécurité</a>
         <a href="#competences">Compétences</a>
       </nav>
       <button class="theme" type="button" id="theme" aria-label="Changer de thème (clair / sombre)">
@@ -678,6 +679,53 @@ footer a { color: var(--muted); }
           <p>Calendrier de surveillance et de maintenance, et méthodes d'intervention clairement définies.</p></div></li>
       </ol>
     </details>
+  </section>
+
+  <section class="block" id="cyberformation">
+    <div class="sec-head">
+      <span class="label">Formation continue · Master 2 ERIS · labo pratique en machines virtuelles</span>
+      <h2>Analyste en cybersécurité : programme pratique en 12 semaines</h2>
+    </div>
+    <div class="case-intro">
+      <div>
+        <p>En parallèle de mon alternance, je suis un programme pratique de 20 chapitres construit autour d'un
+          labo VirtualBox (Kali Linux, Ubuntu Server, Windows) : audit et durcissement système, réponse à
+          incident selon le cadre <strong>NIST SP 800-61</strong>, évaluation des risques et détection via
+          <strong>MITRE ATT&amp;CK</strong>.</p>
+        <p>Chaque chapitre se conclut par un exercice pratique noté, documenté dans un carnet de labo et, pour les
+          jalons, par un livrable rédigé comme en entreprise (rapport d'incident, rapport de risques).</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/christianluvunga/hardening-scripts" target="_blank" rel="noopener">Voir le script de durcissement sur GitHub ↗</a>
+        </div>
+      </div>
+      <div class="facts" aria-label="Le programme en chiffres">
+        <div class="fact"><b>20</b><span>chapitres au programme, sur 12 semaines</span></div>
+        <div class="fact"><b>800-61</b><span>cadre NIST suivi pour la réponse à incident</span></div>
+        <div class="fact"><b>100&nbsp;%</b><span>score aux quiz de validation passés à ce jour</span></div>
+        <div class="fact"><b>ATT&amp;CK</b><span>cartographie MITRE utilisée pour la détection</span></div>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li><div><h3>Durcissement système et réseau</h3>
+        <p>Script Bash idempotent de durcissement Ubuntu : SSH par clé uniquement, double authentification
+          conditionnelle, pare-feu UFW, fail2ban, compte applicatif à droits minimaux — validé par plusieurs
+          relectures et une connexion SSH + MFA réelle depuis Kali.</p></div></li>
+      <li><div><h3>Réponse à incident</h3>
+        <p>Cycle complet NIST SP 800-61 sur une machine compromise : triage (comptes, clés SSH, tâches
+          planifiées, intégrité des paquets), confinement, éradication, puis rapport d'incident rédigé comme en
+          entreprise.</p></div></li>
+      <li><div><h3>Évaluation des risques</h3>
+        <p>Rapport de risques professionnel (résumé pour la direction, constats, matrice probabilité × impact,
+          recommandations priorisées) produit pour un jalon noté du programme.</p></div></li>
+      <li><div><h3>Détection et renseignement sur la menace</h3>
+        <p>Analyse d'e-mails de phishing, règles de détection Sigma, cartographie MITRE ATT&amp;CK Navigator et
+          script Python d'analyse de journaux d'authentification.</p></div></li>
+    </ol>
+
+    <p class="code-note"><strong>Formation en cours.</strong> Ce programme est suivi en parallèle de mon
+      alternance ; cette section sera complétée au fil des chapitres restants (sécurité web, durcissement
+      Windows, RGPD, OPNsense).</p>
   </section>
 
   <section class="block" id="competences">
